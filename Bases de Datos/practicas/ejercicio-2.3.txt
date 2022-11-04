@@ -1,0 +1,15 @@
+2.3)
+Producto(idProducto, descripcion)
+Distribuidor(numDistribuidor, nombre)
+Deposito(numDeposito, capacidad)
+Local(numLocal, direccion)
+Area(idArea, nombre, idProducto, numDistribuidor)
+Empleado(CUIL, fechaIngreso, tipoContratacion)
+Empleado_Efectivo(CUIL, afilicaciones, cantHijos)
+Empleado_Efectivo_ConGremio(CUIL, fechaAfiliacionGremio)
+Empleado_Efectivo_ConPrepaga(CUIL, numAfiliado)
+
+DistribuidoPor(idProducto, numDistribuidor)
+Trabaja(idEmpleado, numLocal, idArea, cantHoras)
+LocalesPorDeposito(idDeposito, idLocal)
+

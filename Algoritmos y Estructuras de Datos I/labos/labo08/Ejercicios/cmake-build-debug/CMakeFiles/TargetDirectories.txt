@@ -1,0 +1,3 @@
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/cmake-build-debug/CMakeFiles/Complejidad.dir

@@ -1,0 +1,91 @@
+{
+  "nombre": "ylbne",
+  "canciones": [
+    {
+      "nombre": "neena",
+      "genero": "xlezk",
+      "featuring": [
+        "baeop",
+        "vripj",
+        "nxnen",
+        "uwqwy",
+        "kbiqg"
+      ],
+      "album": {
+        "nombre": "owyng",
+        "artista": "deeiw",
+        "nro_canciones": 15,
+        "ventas": 948,
+      },
+    },
+    {
+      "nombre": "slkwc",
+      "genero": "okkox",
+      "featuring": [
+        "gpybq",
+        "icvxk",
+        "kmgcz",
+        "ouffe",
+        "ngwjj"
+      ],
+      "album": {
+        "nombre": "ouvuy",
+        "artista": "tyssj",
+        "nro_canciones": 7,
+        "ventas": 786,
+      },
+    },
+    {
+      "nombre": "gkyru",
+      "genero": "ivqus",
+      "featuring": [
+        "ycsmt",
+        "qrhfw",
+        "auait",
+        "poozi",
+        "onjef"
+      ],
+      "album": {
+        "nombre": "vmute",
+        "artista": "oeexi",
+        "nro_canciones": 478,
+        "ventas": 502,
+      },
+    },
+    {
+      "nombre": "fbdcs",
+      "genero": "xplpf",
+      "featuring": [
+        "nocen",
+        "sjwqr",
+        "anovk",
+        "izzcd",
+        "odtsk"
+      ],
+      "album": {
+        "nombre": "aliyp",
+        "artista": "ruwwf",
+        "nro_canciones": 540,
+        "ventas": 194,
+      },
+    },
+    {
+      "nombre": "kuhqc",
+      "genero": "vrjhb",
+      "featuring": [
+        "enhxo",
+        "qbadi",
+        "cojtj",
+        "mdfut",
+        "wztkd"
+      ],
+      "album": {
+        "nombre": "rvjiv",
+        "artista": "ukxmu",
+        "nro_canciones": 368,
+        "ventas": 817,
+      },
+    }
+  ],
+  "duracion": 729,
+}

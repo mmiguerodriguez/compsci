@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Complejidad.dir/main.cpp.o CMakeFiles/Complejidad.dir/ejercicios.cpp.o CMakeFiles/Complejidad.dir/ejercicios_guia.cpp.o  -o Complejidad 

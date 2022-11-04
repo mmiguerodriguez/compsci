@@ -1,0 +1,4841 @@
+
+
+----QUIT----(9 March 2021 14:58:42) CuisUniversity-4532.image priorSource: 13044060!
+
+----STARTUP---- (9 March 2021 14:58:43) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-4532.image!
+
+
+----QUIT----(9 March 2021 14:58:43) CuisUniversity-4532.image priorSource: 16885479!
+
+----STARTUP---- (6 October 2021 15:22:19) as /home/ryan/UBA/Ing1/cuis/linux64/CuisUniversity-4532.image!
+
+
+----End fileIn of /home/ryan/UBA/Ing1/cuis/linux64/MarsRover.st----!
+
+!classRenamed: #E as: #East stamp: 'RI 10/6/2021 15:24:13'!
+Smalltalk renameClassNamed: #E as: #East!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50859843!
+faceEast
+	
+	direction := East new.! !
+!LayoutMorph class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50723189!
+example1b
+"
+Based on #example1, but using some ImageMorph instead of RectangleLikeMorph, so extent is not adjustable
+	self example1b
+"
+| pane row |
+pane _ (LayoutMorph newColumn separation: 5)	name: #example1.
+pane color: Color red.
+
+row _ LayoutMorph newRow name: #Row1.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #A)
+		layoutSpec: (LayoutSpec fixedWidth: 10); 
+	addMorph: (ImageMorph new name: #B);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #C)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.4);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #D)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.15);
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #East)
+		layoutSpec: (LayoutSpec fixedWidth: 20 fixedHeight: 20).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row2.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color blue); name: #F)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.8);
+	addMorph: (ImageMorph new name: #G);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #H)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.2).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row3.
+row
+	color: Color red;
+	addMorph: (ImageMorph new name: #J);
+	addMorph: (WidgetMorph new color: (Color h: 90 s: 0.6 v: 0.6); name: #K)
+		layoutSpec: (LayoutSpec  proportionalWidth: 0.5 fixedHeight: 40);
+	addMorph: (WidgetMorph new color: (Color h: 150 s: 0.6 v: 0.6); name: #L)
+		layoutSpec: (LayoutSpec fixedWidth: 30 proportionalHeight: 1.0).
+pane addMorph: row layoutSpec: (LayoutSpec fixedHeight: 60).
+pane morphPosition: 150@130 extent: 400@300.
+pane openInWorld! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50859369!
+test04
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: N.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).! !
+!Float class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50595820 overrides: 50685238!
+releaseClassCachedState
+
+	Pi _ nil.
+	Halfpi _ nil.
+	Twopi _ nil.
+	RadiansPerDegree _ nil.
+
+	Ln2 _ nil.
+	Ln10 _ nil.
+	Sqrt2 _ nil.
+	East _ nil.
+
+	MaxVal _ nil.
+	MaxValLn _ nil.
+	MinValLogBase2 _ nil.
+
+	Infinity _ nil.
+	NegativeInfinity _ nil.
+	NaN _ nil.
+	NegativeZero _ nil! !
+!LayoutMorph class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50722332!
+example1
+"
+	self example1
+"
+| pane row |
+pane _ (LayoutMorph newColumn separation: 5)	name: #example1.
+pane color: Color red.
+
+row _ LayoutMorph newRow name: #Row1.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #A)
+		layoutSpec: (LayoutSpec fixedWidth: 10); 
+	addMorph: (WidgetMorph new color: (Color blue); name: #B)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.8);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #C)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.4);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #D)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.15);
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #East)
+		layoutSpec: (LayoutSpec fixedWidth: 200 fixedHeight: 200).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row2.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color blue); name: #F)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.8);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #G)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.4);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #H)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.2).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row3.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color h: 120 s: 0.6 v: 0.6); name: #J)
+		layoutSpec: (LayoutSpec fixedWidth: 20 proportionalHeight: 0.8);
+	addMorph: (WidgetMorph new color: (Color h: 90 s: 0.6 v: 0.6); name: #K)
+		layoutSpec: (LayoutSpec  proportionalWidth: 0.5 fixedHeight: 40);
+	addMorph: (WidgetMorph new color: (Color h: 150 s: 0.6 v: 0.6); name: #L)
+		layoutSpec: (LayoutSpec fixedWidth: 30 proportionalHeight: 1.0).
+pane addMorph: row layoutSpec: (LayoutSpec fixedHeight: 60).
+pane morphPosition: 150@130 extent: 400@300.
+pane openInWorld! !
+!Float class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50598550!
+e
+	"Answer the constant, e."
+
+	^East! !
+!LayoutMorph class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50722397!
+example10
+"
+	self example10 openInWorld
+"
+| pane row |
+pane _ (LayoutMorph newColumn separation: 5)	name: #example10.
+pane color: Color red.
+
+row _ LayoutMorph newRow name: #Row1.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #A)
+		layoutSpec: (LayoutSpec fixedWidth: 10); 
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color blue); name: #B)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.8);
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #C)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.4);
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #D)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.15);
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #East)
+		layoutSpec: (LayoutSpec fixedWidth: 20 fixedHeight: 20).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row2.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color blue); name: #F)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.8);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #G)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.4);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #H)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.2).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row3.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color h: 120 s: 0.6 v: 0.6); name: #J)
+		layoutSpec: (LayoutSpec fixedWidth: 20 proportionalHeight: 0.8);
+	addMorph: (WidgetMorph new color: (Color h: 90 s: 0.6 v: 0.6); name: #K)
+		layoutSpec: (LayoutSpec  proportionalWidth: 0.5 fixedHeight: 40);
+	addMorph: (WidgetMorph new color: (Color h: 150 s: 0.6 v: 0.6); name: #L)
+		layoutSpec: (LayoutSpec fixedWidth: 30 proportionalHeight: 1.0).
+pane addMorph: row layoutSpec: (LayoutSpec fixedHeight: 60).
+^ pane! !
+!LayoutMorph class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50722463!
+example11
+"
+	self example11
+"
+| pane row |
+pane _ (LayoutMorph newColumn separation: 5)	name: #example11.
+pane color: Color red.
+
+row _ LayoutMorph newRow name: #Row1.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #A)
+		layoutSpec: (LayoutSpec fixedWidth: 10); 
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color blue); name: #B)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.8);
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #C)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.4);
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #D)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.15);
+	addAdjusterMorph; 
+	addMorph: (WidgetMorph new color: (Color h: 60 s: 0.6 v: 0.6); name: #East)
+		layoutSpec: (LayoutSpec fixedWidth: 20 fixedHeight: 20).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row2.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color blue); name: #F)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.8);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #G)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.4);
+	addMorph: (WidgetMorph new color: (Color h: 30 s: 0.6 v: 0.6); name: #H)
+		layoutSpec: (LayoutSpec proportionalWidth: 0.2).
+pane addMorph: row layoutSpec: LayoutSpec useAll.
+
+row _ (LayoutMorph newRow separation: 5) name: #Row3.
+row
+	color: Color red;
+	addMorph: (WidgetMorph new color: (Color h: 120 s: 0.6 v: 0.6); name: #J)
+		layoutSpec: (LayoutSpec fixedWidth: 20 proportionalHeight: 0.8);
+	addMorph: (WidgetMorph new color: (Color h: 90 s: 0.6 v: 0.6); name: #K)
+		layoutSpec: (LayoutSpec  proportionalWidth: 0.5 fixedHeight: 40);
+	addMorph: (WidgetMorph new color: (Color h: 150 s: 0.6 v: 0.6); name: #L)
+		layoutSpec: (LayoutSpec fixedWidth: 30 proportionalHeight: 1.0).
+pane addMorph: row layoutSpec: (LayoutSpec fixedHeight: 60).
+pane morphPosition: 150@130 extent: 400@300.
+pane openInWorld! !
+!Float class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:13' prior: 50600349 overrides: 16784996!
+initClassCachedState
+	"Float initialize"
+	"Constants from Computer Approximations, pp. 182-183:
+		Pi = 3.14159265358979323846264338327950288
+		Pi/2 = 1.57079632679489661923132169163975144
+		Pi*2 = 6.28318530717958647692528676655900576
+		Pi/180 = 0.01745329251994329576923690768488612
+		2.0 ln = 0.69314718055994530941723212145817657
+		2.0 sqrt = 1.41421356237309504880168872420969808"
+
+	Pi _ 3.14159265358979323846264338327950288.
+	Halfpi _ Pi / 2.0.
+	Twopi _ Pi * 2.0.
+	RadiansPerDegree _ Pi / 180.0.
+
+	Ln2 _ 0.69314718055994530941723212145817657.
+	Ln10 _ 10.0 ln.
+	Sqrt2 _ 1.41421356237309504880168872420969808.
+	East _ 2.718281828459045235360287471353.
+
+	MaxVal _ 1.7976931348623157e308.
+	MaxValLn _ 709.782712893384.
+	MinValLogBase2 _ -1074.
+
+	Infinity _ MaxVal * MaxVal.
+	NegativeInfinity _ 0.0 - Infinity.
+	NaN _ Infinity - Infinity.
+	NegativeZero _ Float fmin negated nextTowardsZero.
+! !
+
+!classRenamed: #N as: #North stamp: 'RI 10/6/2021 15:24:56'!
+Smalltalk renameClassNamed: #N as: #North!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859353!
+test02
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 1@3 facing: North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859346!
+test01
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: ''.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859377!
+test05
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: W).! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859847!
+faceNorth
+	
+	direction := North new.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859433!
+test12
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'fxf'.
+	
+	self assert: true equals: (rover isAt: 1@3 facing: North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859425!
+test11
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'ff'.
+	
+	self assert: true equals: (rover isAt: 1@4 facing: North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859409!
+test09
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: W.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859417!
+test10
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'x'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859361!
+test03
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 1@1 facing: North).! !
+!Character class methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50686615!
+namedCharactersTable
+	"Table of named characters that we can enter in an editor using \name.
+	Please keep the names short and try to follow the naming convention used in LaTeX."
+	^ #((left $) (right $) (up $) (down $) (oplus $ê) (otimes $ë) (times $◊) (div $˜) #(circ $í) (dot $∑) (bullet $ì) (diamond $î) (star $ï) (alpha $à) (beta $â) (gamma $ä) (delta $ã) (epsilon $å) (lambda $ç) (mu $µ) (pi $é) (zeta $è) (Delta $ñ) (Gamma $ó) (Omega $ò) (N $Ç) (Z $É) (Q $Ñ) (R $Ö) (C $Ü) (P $á) (infty $Ä) (aleph $Å) (sqrt $ü) (partial $û) (degree $∞))! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:24:56' prior: 50859976!
+test04
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).! !
+
+!classRenamed: #S as: #South stamp: 'RI 10/6/2021 15:25:06'!
+Smalltalk renameClassNamed: #S as: #South!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:06' prior: 50859851!
+faceSouth
+	
+	direction := South new.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:06' prior: 50859401!
+test08
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: W.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: South).! !
+
+!classRenamed: #W as: #West stamp: 'RI 10/6/2021 15:25:13'!
+Smalltalk renameClassNamed: #W as: #West!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:13' prior: 50859393!
+test07
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 2@2 facing: West).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:13' prior: 50859385!
+test06
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 0@2 facing: West).! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:13' prior: 50859855!
+faceWest
+	
+	direction := West new.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:13' prior: 50860252!
+test05
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: West).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:13' prior: 50860281!
+test09
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:25:13' prior: 50860342!
+test08
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: South).! !
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:25:53'!
+PASSED!
+
+!methodRemoval: Directions class #moveBackward stamp: 'RI 10/6/2021 15:26:22'!
+moveBackward
+
+	self subclassResponsibility.!
+
+!methodRemoval: Directions class #moveForward stamp: 'RI 10/6/2021 15:26:34'!
+moveForward
+
+	self subclassResponsibility.!
+
+!methodRemoval: Directions class #rotateLeft stamp: 'RI 10/6/2021 15:26:40'!
+rotateLeft
+
+	self subclassResponsibility.!
+
+!methodRemoval: Directions class #rotateRight stamp: 'RI 10/6/2021 15:26:42'!
+rotateRight
+
+	self subclassResponsibility.!
+
+!testRun: #MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:26:44'!
+PASSED!
+
+!classRenamed: #Commands as: #MarsRoverCommands stamp: 'RI 10/6/2021 15:29:37'!
+Smalltalk renameClassNamed: #Commands as: #MarsRoverCommands!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:29:37' prior: 50859811!
+getCommandsFromMessage: aMessage
+
+	| aSequenceOfCommands |	
+	
+	aSequenceOfCommands := OrderedCollection new.
+	
+	aMessage do: [:aCharacter | | command |	
+		command := MarsRoverCommands initializeFor: aCharacter.
+		
+		command isValid ifFalse: [^aSequenceOfCommands].
+		aSequenceOfCommands add: command.
+	].
+
+	^aSequenceOfCommands.! !
+
+!classRenamed: #Directions as: #MarsRoverDirection stamp: 'RI 10/6/2021 15:30:02'!
+Smalltalk renameClassNamed: #Directions as: #MarsRoverDirection!
+
+!classRenamed: #MarsRoverCommands as: #MarsRoverCommand stamp: 'RI 10/6/2021 15:30:31'!
+Smalltalk renameClassNamed: #MarsRoverCommands as: #MarsRoverCommand!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:30:31' prior: 50861010!
+getCommandsFromMessage: aMessage
+
+	| aSequenceOfCommands |	
+	
+	aSequenceOfCommands := OrderedCollection new.
+	
+	aMessage do: [:aCharacter | | command |	
+		command := MarsRoverCommand initializeFor: aCharacter.
+		
+		command isValid ifFalse: [^aSequenceOfCommands].
+		aSequenceOfCommands add: command.
+	].
+
+	^aSequenceOfCommands.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:31:48'!
+test01RoverStaysInTheSamePlaceWithoutCommands
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: ''.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test01 stamp: 'RI 10/6/2021 15:31:55'!
+test01
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: ''.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:32:02'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:32:47'!
+test02RoverMovesForwardFacingNorth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 1@3 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test02 stamp: 'RI 10/6/2021 15:32:47'!
+test02
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 1@3 facing: North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:33:17'!
+test03RoverMovesBackwardsFacingNorth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 1@1 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test03 stamp: 'RI 10/6/2021 15:33:17'!
+test03
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 1@1 facing: North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:33:33'!
+test04RoverRotatesRightFacingNorth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).! !
+
+!methodRemoval: MarsRoverTest #test04 stamp: 'RI 10/6/2021 15:33:33'!
+test04
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:35:06'!
+test05RoverRotatesLeftFacingNorthShouldFaceWest
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: West).! !
+
+!methodRemoval: MarsRoverTest #test05 stamp: 'RI 10/6/2021 15:35:06'!
+test05
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: West).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:35:18'!
+test04RoverRotatesRightFacingNorthShouldFaceEast
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).! !
+
+!methodRemoval: MarsRoverTest #test04RoverRotatesRightFacingNorth stamp: 'RI 10/6/2021 15:35:18'!
+test04RoverRotatesRightFacingNorth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:36:54'!
+test06RoverMovesForwardFacingWest
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 0@2 facing: West).! !
+
+!methodRemoval: MarsRoverTest #test06 stamp: 'RI 10/6/2021 15:36:54'!
+test06
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 0@2 facing: West).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:37:07'!
+test07RoverMovesBackwardsFacingWest
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 2@2 facing: West).! !
+
+!methodRemoval: MarsRoverTest #test07 stamp: 'RI 10/6/2021 15:37:07'!
+test07
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 2@2 facing: West).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:37:43'!
+test08RoverRotatesLeftFacingWestShouldFaceSouth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: South).! !
+
+!methodRemoval: MarsRoverTest #test08 stamp: 'RI 10/6/2021 15:37:43'!
+test08
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: South).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:38:08'!
+test09RoverRotatesRightFacingWestShouldFaceNorth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test09 stamp: 'RI 10/6/2021 15:38:08'!
+test09
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: West.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:38:48'!
+test10RoverReceivesInvalidCommandShouldDoNothing
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'x'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test10 stamp: 'RI 10/6/2021 15:38:48'!
+test10
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'x'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:39:09'!
+test10RoverReceivingInvalidCommandShouldDoNothing
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'x'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test10RoverReceivesInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:39:09'!
+test10RoverReceivesInvalidCommandShouldDoNothing
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'x'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:39:52'!
+test11RoverReceivingTwoCommandsShouldMoveForwardTwice
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'ff'.
+	
+	self assert: true equals: (rover isAt: 1@4 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test11 stamp: 'RI 10/6/2021 15:39:52'!
+test11
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'ff'.
+	
+	self assert: true equals: (rover isAt: 1@4 facing: North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:40:30'!
+test11RoverReceivingValidCommandsShouldExecuteAll
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'ff'.
+	
+	self assert: true equals: (rover isAt: 1@4 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test11RoverReceivingTwoCommandsShouldMoveForwardTwice stamp: 'RI 10/6/2021 15:40:30'!
+test11RoverReceivingTwoCommandsShouldMoveForwardTwice
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'ff'.
+	
+	self assert: true equals: (rover isAt: 1@4 facing: North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:41:02'!
+test12RoverReceivingInvalidCommandShouldEndExecution
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'fxf'.
+	
+	self assert: true equals: (rover isAt: 1@3 facing: North).! !
+
+!methodRemoval: MarsRoverTest #test12 stamp: 'RI 10/6/2021 15:41:02'!
+test12
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: 'fxf'.
+	
+	self assert: true equals: (rover isAt: 1@3 facing: North).!
+!Behavior method!
+at: aPosition facing: aDirection
+	^ [
+	([
+	(MarsRover
+		cover: (39 to: 47)
+		declaredAt: (39 to: 47)) new ] valueCoveringAll:
+		{49 to: 51})
+		initializeAt:
+			(aPosition
+				cover: (67 to: 75)
+				declaredAt: (5 to: 13))
+		facing:
+			(aDirection
+				cover: (85 to: 94)
+				declaredAt: (23 to: 32)) ] valueCoveringAll:
+		{53 to: 65. 77 to: 83}.! !
+!Behavior method!
+initializeAt: aPosition facing: aDirection
+	(position _ aPosition
+		cover: (58 to: 66)
+		declaredAt: (15 to: 23))
+		cover: (46 to: 53)
+		declaredAt: (46 to: 53).
+	(direction _ [
+	(aDirection
+		cover: (83 to: 92)
+		declaredAt: (33 to: 42)) new ] valueCoveringAll:
+		{94 to: 96})
+		cover: (70 to: 78)
+		declaredAt: (70 to: 78).! !
+!Behavior method!
+process: aMessage
+	| aSequenceOfCommands |
+	(aSequenceOfCommands _ [
+	(self coverAll:
+		{70 to: 73}) getCommandsFromMessage:
+		(aMessage
+			cover: (99 to: 106)
+			declaredAt: (10 to: 17)) ] valueCoveringAll:
+		{75 to: 97})
+		cover: (47 to: 65)
+		declaredAt: (23 to: 41).
+	[
+	(self coverAll:
+		{110 to: 113}) processCommands:
+		(aSequenceOfCommands
+			cover: (132 to: 150)
+			declaredAt: (23 to: 41)) ] valueCoveringAll:
+		{115 to: 130}.! !
+!Behavior method!
+getCommandsFromMessage: aMessage
+	| aSequenceOfCommands |
+	(aSequenceOfCommands _ [
+	(OrderedCollection
+		cover: (87 to: 103)
+		declaredAt: (87 to: 103)) new ] valueCoveringAll:
+		{105 to: 107})
+		cover: (64 to: 82)
+		declaredAt: (38 to: 56).
+	[
+	(aMessage
+		cover: (113 to: 120)
+		declaredAt: (25 to: 32)) do: [ :aCharacter | | command |
+		(command _ [
+		(MarsRoverCommand
+			cover: (167 to: 182)
+			declaredAt: (167 to: 182)) initializeFor:
+			(aCharacter
+				cover: (199 to: 208)
+				declaredAt: (128 to: 137)) ] valueCoveringAll:
+			{184 to: 197})
+			cover: (156 to: 162)
+			declaredAt: (143 to: 149).
+		[
+		([
+		(command
+			cover: (216 to: 222)
+			declaredAt: (143 to: 149)) isValid ] valueCoveringAll:
+			{224 to: 230}) ifFalse: [ ^ aSequenceOfCommands
+				cover: (243 to: 261)
+				declaredAt: (38 to: 56) ]] valueCoveringAll:
+			{232 to: 239}.
+		[
+		(aSequenceOfCommands
+			cover: (267 to: 285)
+			declaredAt: (38 to: 56)) add:
+			(command
+				cover: (292 to: 298)
+				declaredAt: (143 to: 149)) ] valueCoveringAll:
+			{287 to: 290} ]] valueCoveringAll:
+		{122 to: 124}.
+	^ aSequenceOfCommands
+		cover: (308 to: 326)
+		declaredAt: (38 to: 56).! !
+!Behavior method!
+processCommands: aSequenceOfCommands
+	[
+	(aSequenceOfCommands
+		cover: (41 to: 59)
+		declaredAt: (18 to: 36)) do: [ :aCommand |
+		[
+		(aCommand
+			cover: (80 to: 87)
+			declaredAt: (67 to: 74)) execute:
+			(self coverAll:
+				{98 to: 101}) ] valueCoveringAll:
+			{89 to: 96} ]] valueCoveringAll:
+		{61 to: 63}.! !
+!Behavior method!
+isAt: aPosition facing: aDirection
+	^ [
+	([
+	(position
+		cover: (40 to: 47)
+		declaredAt: (40 to: 47)) =
+		(aPosition
+			cover: (51 to: 59)
+			declaredAt: (7 to: 15)) ] valueCoveringAll:
+		{49 to: 49}) and: [
+		[
+		([
+		(direction
+			cover: (68 to: 76)
+			declaredAt: (68 to: 76)) class ] valueCoveringAll:
+			{78 to: 82}) =
+			(aDirection
+				cover: (86 to: 95)
+				declaredAt: (25 to: 34)) ] valueCoveringAll:
+			{84 to: 84} ]] valueCoveringAll:
+		{62 to: 65}.! !
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+initializeFor: aCommand
+	^ [
+	([
+	([
+	(self coverAll:
+		{30 to: 33}) subclasses ] valueCoveringAll:
+		{35 to: 44})
+		detect: [ :subclass |
+			[
+			(subclass
+				cover: (67 to: 74)
+				declaredAt: (56 to: 63)) isFor:
+				(aCommand
+					cover: (83 to: 90)
+					declaredAt: (16 to: 23)) ] valueCoveringAll:
+				{76 to: 81} ]
+		ifNone: [
+			Invalid
+				cover: (102 to: 108)
+				declaredAt: (102 to: 108) ]] valueCoveringAll:
+		{46 to: 52. 93 to: 99}) new ] valueCoveringAll:
+		{112 to: 114}.! !
+!Behavior method!
+isFor: aCommand
+	^ false coverAll:
+		{20 to: 24}.! !
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($b coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($f coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) moveForward ] valueCoveringAll:
+		{26 to: 36}.! !
+!Behavior method!
+moveForward
+	[
+	(direction
+		cover: (16 to: 24)
+		declaredAt: (16 to: 24)) moveForward:
+		(self coverAll:
+			{39 to: 42}) ] valueCoveringAll:
+		{26 to: 37}.! !
+!Behavior method!
+moveForward: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) moveNorth ] valueCoveringAll:
+		{30 to: 38}.! !
+!Behavior method!
+moveNorth
+	(position _ [
+	(position
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21)) +
+		([
+		(0 coverAll:
+			{38 to: 38}) @
+			(1 coverAll:
+				{40 to: 40}) ] valueCoveringAll:
+			{39 to: 39}) ] valueCoveringAll:
+		{35 to: 35})
+		cover: (26 to: 33)
+		declaredAt: (14 to: 21).! !
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) moveBackwards ] valueCoveringAll:
+		{26 to: 38}.! !
+!Behavior method!
+moveBackwards
+	[
+	(direction
+		cover: (18 to: 26)
+		declaredAt: (18 to: 26)) moveBackwards:
+		(self coverAll:
+			{43 to: 46}) ] valueCoveringAll:
+		{28 to: 41}.! !
+!Behavior method!
+moveBackwards: aRover
+	[
+	(aRover
+		cover: (25 to: 30)
+		declaredAt: (16 to: 21)) moveSouth ] valueCoveringAll:
+		{32 to: 40}.! !
+!Behavior method!
+moveSouth
+	(position _ [
+	(position
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21)) -
+		([
+		(0 coverAll:
+			{38 to: 38}) @
+			(1 coverAll:
+				{40 to: 40}) ] valueCoveringAll:
+			{39 to: 39}) ] valueCoveringAll:
+		{35 to: 35})
+		cover: (26 to: 33)
+		declaredAt: (14 to: 21).! !
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($l coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($r coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) rotateRight ] valueCoveringAll:
+		{26 to: 36}.! !
+!Behavior method!
+rotateRight
+	[
+	(direction
+		cover: (16 to: 24)
+		declaredAt: (16 to: 24)) rotateRight:
+		(self coverAll:
+			{39 to: 42}) ] valueCoveringAll:
+		{26 to: 37}.! !
+!Behavior method!
+rotateRight: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) faceEast ] valueCoveringAll:
+		{30 to: 37}.! !
+!Behavior method!
+faceEast
+	(direction _ [
+	(East
+		cover: (26 to: 29)
+		declaredAt: (26 to: 29)) new ] valueCoveringAll:
+		{31 to: 33})
+		cover: (13 to: 21)
+		declaredAt: (13 to: 21).! !
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) rotateLeft ] valueCoveringAll:
+		{26 to: 35}.! !
+!Behavior method!
+rotateLeft
+	[
+	(direction
+		cover: (15 to: 23)
+		declaredAt: (15 to: 23)) rotateLeft:
+		(self coverAll:
+			{37 to: 40}) ] valueCoveringAll:
+		{25 to: 35}.! !
+!Behavior method!
+rotateLeft: aRover
+	[
+	(aRover
+		cover: (22 to: 27)
+		declaredAt: (13 to: 18)) faceWest ] valueCoveringAll:
+		{29 to: 36}.! !
+!Behavior method!
+faceWest
+	(direction _ [
+	(West
+		cover: (26 to: 29)
+		declaredAt: (26 to: 29)) new ] valueCoveringAll:
+		{31 to: 33})
+		cover: (13 to: 21)
+		declaredAt: (13 to: 21).! !
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+moveForward: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) moveWest ] valueCoveringAll:
+		{30 to: 37}.! !
+!Behavior method!
+moveWest
+	(position _ [
+	(position
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20)) -
+		([
+		(1 coverAll:
+			{37 to: 37}) @
+			(0 coverAll:
+				{39 to: 39}) ] valueCoveringAll:
+			{38 to: 38}) ] valueCoveringAll:
+		{34 to: 34})
+		cover: (25 to: 32)
+		declaredAt: (13 to: 20).! !
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+moveBackwards: aRover
+	[
+	(aRover
+		cover: (25 to: 30)
+		declaredAt: (16 to: 21)) moveEast ] valueCoveringAll:
+		{32 to: 39}.! !
+!Behavior method!
+moveEast
+	(position _ [
+	(position
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20)) +
+		([
+		(1 coverAll:
+			{37 to: 37}) @
+			(0 coverAll:
+				{39 to: 39}) ] valueCoveringAll:
+			{38 to: 38}) ] valueCoveringAll:
+		{34 to: 34})
+		cover: (25 to: 32)
+		declaredAt: (13 to: 20).! !
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+rotateLeft: aRover
+	[
+	(aRover
+		cover: (22 to: 27)
+		declaredAt: (13 to: 18)) faceSouth ] valueCoveringAll:
+		{29 to: 37}.! !
+!Behavior method!
+faceSouth
+	(direction _ [
+	(South
+		cover: (27 to: 31)
+		declaredAt: (27 to: 31)) new ] valueCoveringAll:
+		{33 to: 35})
+		cover: (14 to: 22)
+		declaredAt: (14 to: 22).! !
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+rotateRight: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) faceNorth ] valueCoveringAll:
+		{30 to: 38}.! !
+!Behavior method!
+faceNorth
+	(direction _ [
+	(North
+		cover: (27 to: 31)
+		declaredAt: (27 to: 31)) new ] valueCoveringAll:
+		{33 to: 35})
+		cover: (14 to: 22)
+		declaredAt: (14 to: 22).! !
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!Behavior method!
+isValid
+	^ false coverAll:
+		{12 to: 16}.! !
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:44:01'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:48:23'!
+test13RoverMovesForwardFacingSouth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 1@1 facing: South).! !
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:48:24'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:48:48'!
+test14RoverMovesForwardFacingEast
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: East.
+	
+	rover process: 'f'.
+	
+	self assert: true equals: (rover isAt: 2@2 facing: East).! !
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:48:50'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:49:14'!
+test15RoverMovesBackwardsFacingEast
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: East.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 0@2 facing: East).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:49:32'!
+test16RoverMovesBackwardsFacingSouth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 0@2 facing: South).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:49:37' prior: 50861791!
+test16RoverMovesBackwardsFacingSouth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'b'.
+	
+	self assert: true equals: (rover isAt: 1@3 facing: South).! !
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:49:38'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:50:16'!
+test04RoverRotatesRightFacingEastShouldFaceSouth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: East.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: South).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:50:30'!
+test17RoverRotatesRightFacingEastShouldFaceSouth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: East.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: South).! !
+
+!methodRemoval: MarsRoverTest #test04RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:50:30'!
+test04RoverRotatesRightFacingEastShouldFaceSouth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: East.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: South).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:50:57'!
+test18RoverRotatesLeftFacingEastShouldFaceNorth
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: East.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:50:58'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:51:38'!
+test18RoverRotatesRightFacingSouthShouldFaceWest
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: West).! !
+
+!testRun: #MarsRoverTest #test18RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:51:39'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:51:44' prior: 50861969!
+test18RoverRotatesRightFacingSouthShouldFaceWest
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: West).! !
+
+!testRun: #MarsRoverTest #test18RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:51:46'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:52:13'!
+test20RoverRotatesLeftFacingSouthShouldFaceEast
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).! !
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:52:14'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:52:20' prior: 50862060!
+test20RoverRotatesLeftFacingSouthShouldFaceEast
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'l'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: East).! !
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:52:21'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:52:28'!
+test19RoverRotatesRightFacingSouthShouldFaceWest
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: West).! !
+
+!methodRemoval: MarsRoverTest #test18RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:52:28'!
+test18RoverRotatesRightFacingSouthShouldFaceWest
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: South.
+	
+	rover process: 'r'.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: West).!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:52:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:52:34'!
+PASSED!
+!Behavior method!
+at: aPosition facing: aDirection
+	^ [
+	([
+	(MarsRover
+		cover: (39 to: 47)
+		declaredAt: (39 to: 47)) new ] valueCoveringAll:
+		{49 to: 51})
+		initializeAt:
+			(aPosition
+				cover: (67 to: 75)
+				declaredAt: (5 to: 13))
+		facing:
+			(aDirection
+				cover: (85 to: 94)
+				declaredAt: (23 to: 32)) ] valueCoveringAll:
+		{53 to: 65. 77 to: 83}.! !
+!Behavior method!
+initializeAt: aPosition facing: aDirection
+	(position _ aPosition
+		cover: (58 to: 66)
+		declaredAt: (15 to: 23))
+		cover: (46 to: 53)
+		declaredAt: (46 to: 53).
+	(direction _ [
+	(aDirection
+		cover: (83 to: 92)
+		declaredAt: (33 to: 42)) new ] valueCoveringAll:
+		{94 to: 96})
+		cover: (70 to: 78)
+		declaredAt: (70 to: 78).! !
+!Behavior method!
+process: aMessage
+	| aSequenceOfCommands |
+	(aSequenceOfCommands _ [
+	(self coverAll:
+		{70 to: 73}) getCommandsFromMessage:
+		(aMessage
+			cover: (99 to: 106)
+			declaredAt: (10 to: 17)) ] valueCoveringAll:
+		{75 to: 97})
+		cover: (47 to: 65)
+		declaredAt: (23 to: 41).
+	[
+	(self coverAll:
+		{110 to: 113}) processCommands:
+		(aSequenceOfCommands
+			cover: (132 to: 150)
+			declaredAt: (23 to: 41)) ] valueCoveringAll:
+		{115 to: 130}.! !
+!Behavior method!
+getCommandsFromMessage: aMessage
+	| aSequenceOfCommands |
+	(aSequenceOfCommands _ [
+	(OrderedCollection
+		cover: (87 to: 103)
+		declaredAt: (87 to: 103)) new ] valueCoveringAll:
+		{105 to: 107})
+		cover: (64 to: 82)
+		declaredAt: (38 to: 56).
+	[
+	(aMessage
+		cover: (113 to: 120)
+		declaredAt: (25 to: 32)) do: [ :aCharacter | | command |
+		(command _ [
+		(MarsRoverCommand
+			cover: (167 to: 182)
+			declaredAt: (167 to: 182)) initializeFor:
+			(aCharacter
+				cover: (199 to: 208)
+				declaredAt: (128 to: 137)) ] valueCoveringAll:
+			{184 to: 197})
+			cover: (156 to: 162)
+			declaredAt: (143 to: 149).
+		[
+		([
+		(command
+			cover: (216 to: 222)
+			declaredAt: (143 to: 149)) isValid ] valueCoveringAll:
+			{224 to: 230}) ifFalse: [ ^ aSequenceOfCommands
+				cover: (243 to: 261)
+				declaredAt: (38 to: 56) ]] valueCoveringAll:
+			{232 to: 239}.
+		[
+		(aSequenceOfCommands
+			cover: (267 to: 285)
+			declaredAt: (38 to: 56)) add:
+			(command
+				cover: (292 to: 298)
+				declaredAt: (143 to: 149)) ] valueCoveringAll:
+			{287 to: 290} ]] valueCoveringAll:
+		{122 to: 124}.
+	^ aSequenceOfCommands
+		cover: (308 to: 326)
+		declaredAt: (38 to: 56).! !
+!Behavior method!
+processCommands: aSequenceOfCommands
+	[
+	(aSequenceOfCommands
+		cover: (41 to: 59)
+		declaredAt: (18 to: 36)) do: [ :aCommand |
+		[
+		(aCommand
+			cover: (80 to: 87)
+			declaredAt: (67 to: 74)) execute:
+			(self coverAll:
+				{98 to: 101}) ] valueCoveringAll:
+			{89 to: 96} ]] valueCoveringAll:
+		{61 to: 63}.! !
+!Behavior method!
+isAt: aPosition facing: aDirection
+	^ [
+	([
+	(position
+		cover: (40 to: 47)
+		declaredAt: (40 to: 47)) =
+		(aPosition
+			cover: (51 to: 59)
+			declaredAt: (7 to: 15)) ] valueCoveringAll:
+		{49 to: 49}) and: [
+		[
+		([
+		(direction
+			cover: (68 to: 76)
+			declaredAt: (68 to: 76)) class ] valueCoveringAll:
+			{78 to: 82}) =
+			(aDirection
+				cover: (86 to: 95)
+				declaredAt: (25 to: 34)) ] valueCoveringAll:
+			{84 to: 84} ]] valueCoveringAll:
+		{62 to: 65}.! !
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+initializeFor: aCommand
+	^ [
+	([
+	([
+	(self coverAll:
+		{30 to: 33}) subclasses ] valueCoveringAll:
+		{35 to: 44})
+		detect: [ :subclass |
+			[
+			(subclass
+				cover: (67 to: 74)
+				declaredAt: (56 to: 63)) isFor:
+				(aCommand
+					cover: (83 to: 90)
+					declaredAt: (16 to: 23)) ] valueCoveringAll:
+				{76 to: 81} ]
+		ifNone: [
+			Invalid
+				cover: (102 to: 108)
+				declaredAt: (102 to: 108) ]] valueCoveringAll:
+		{46 to: 52. 93 to: 99}) new ] valueCoveringAll:
+		{112 to: 114}.! !
+!Behavior method!
+isFor: aCommand
+	^ false coverAll:
+		{20 to: 24}.! !
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($b coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($f coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) moveForward ] valueCoveringAll:
+		{26 to: 36}.! !
+!Behavior method!
+moveForward
+	[
+	(direction
+		cover: (16 to: 24)
+		declaredAt: (16 to: 24)) moveForward:
+		(self coverAll:
+			{39 to: 42}) ] valueCoveringAll:
+		{26 to: 37}.! !
+!Behavior method!
+moveForward: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) moveNorth ] valueCoveringAll:
+		{30 to: 38}.! !
+!Behavior method!
+moveNorth
+	(position _ [
+	(position
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21)) +
+		([
+		(0 coverAll:
+			{38 to: 38}) @
+			(1 coverAll:
+				{40 to: 40}) ] valueCoveringAll:
+			{39 to: 39}) ] valueCoveringAll:
+		{35 to: 35})
+		cover: (26 to: 33)
+		declaredAt: (14 to: 21).! !
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) moveBackwards ] valueCoveringAll:
+		{26 to: 38}.! !
+!Behavior method!
+moveBackwards
+	[
+	(direction
+		cover: (18 to: 26)
+		declaredAt: (18 to: 26)) moveBackwards:
+		(self coverAll:
+			{43 to: 46}) ] valueCoveringAll:
+		{28 to: 41}.! !
+!Behavior method!
+moveBackwards: aRover
+	[
+	(aRover
+		cover: (25 to: 30)
+		declaredAt: (16 to: 21)) moveSouth ] valueCoveringAll:
+		{32 to: 40}.! !
+!Behavior method!
+moveSouth
+	(position _ [
+	(position
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21)) -
+		([
+		(0 coverAll:
+			{38 to: 38}) @
+			(1 coverAll:
+				{40 to: 40}) ] valueCoveringAll:
+			{39 to: 39}) ] valueCoveringAll:
+		{35 to: 35})
+		cover: (26 to: 33)
+		declaredAt: (14 to: 21).! !
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($l coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isFor: aCommand
+	^ [
+	(aCommand
+		cover: (20 to: 27)
+		declaredAt: (8 to: 15)) =
+		($r coverAll:
+			{31 to: 32}) ] valueCoveringAll:
+		{29 to: 29}.! !
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) rotateRight ] valueCoveringAll:
+		{26 to: 36}.! !
+!Behavior method!
+rotateRight
+	[
+	(direction
+		cover: (16 to: 24)
+		declaredAt: (16 to: 24)) rotateRight:
+		(self coverAll:
+			{39 to: 42}) ] valueCoveringAll:
+		{26 to: 37}.! !
+!Behavior method!
+rotateRight: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) faceEast ] valueCoveringAll:
+		{30 to: 37}.! !
+!Behavior method!
+faceEast
+	(direction _ [
+	(East
+		cover: (26 to: 29)
+		declaredAt: (26 to: 29)) new ] valueCoveringAll:
+		{31 to: 33})
+		cover: (13 to: 21)
+		declaredAt: (13 to: 21).! !
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+isValid
+	^ true coverAll:
+		{12 to: 15}.! !
+!Behavior method!
+execute: aRover
+	[
+	(aRover
+		cover: (19 to: 24)
+		declaredAt: (10 to: 15)) rotateLeft ] valueCoveringAll:
+		{26 to: 35}.! !
+!Behavior method!
+rotateLeft
+	[
+	(direction
+		cover: (15 to: 23)
+		declaredAt: (15 to: 23)) rotateLeft:
+		(self coverAll:
+			{37 to: 40}) ] valueCoveringAll:
+		{25 to: 35}.! !
+!Behavior method!
+rotateLeft: aRover
+	[
+	(aRover
+		cover: (22 to: 27)
+		declaredAt: (13 to: 18)) faceWest ] valueCoveringAll:
+		{29 to: 36}.! !
+!Behavior method!
+faceWest
+	(direction _ [
+	(West
+		cover: (26 to: 29)
+		declaredAt: (26 to: 29)) new ] valueCoveringAll:
+		{31 to: 33})
+		cover: (13 to: 21)
+		declaredAt: (13 to: 21).! !
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+moveForward: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) moveWest ] valueCoveringAll:
+		{30 to: 37}.! !
+!Behavior method!
+moveWest
+	(position _ [
+	(position
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20)) -
+		([
+		(1 coverAll:
+			{37 to: 37}) @
+			(0 coverAll:
+				{39 to: 39}) ] valueCoveringAll:
+			{38 to: 38}) ] valueCoveringAll:
+		{34 to: 34})
+		cover: (25 to: 32)
+		declaredAt: (13 to: 20).! !
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+moveBackwards: aRover
+	[
+	(aRover
+		cover: (25 to: 30)
+		declaredAt: (16 to: 21)) moveEast ] valueCoveringAll:
+		{32 to: 39}.! !
+!Behavior method!
+moveEast
+	(position _ [
+	(position
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20)) +
+		([
+		(1 coverAll:
+			{37 to: 37}) @
+			(0 coverAll:
+				{39 to: 39}) ] valueCoveringAll:
+			{38 to: 38}) ] valueCoveringAll:
+		{34 to: 34})
+		cover: (25 to: 32)
+		declaredAt: (13 to: 20).! !
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+rotateLeft: aRover
+	[
+	(aRover
+		cover: (22 to: 27)
+		declaredAt: (13 to: 18)) faceSouth ] valueCoveringAll:
+		{29 to: 37}.! !
+!Behavior method!
+faceSouth
+	(direction _ [
+	(South
+		cover: (27 to: 31)
+		declaredAt: (27 to: 31)) new ] valueCoveringAll:
+		{33 to: 35})
+		cover: (14 to: 22)
+		declaredAt: (14 to: 22).! !
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+rotateRight: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) faceNorth ] valueCoveringAll:
+		{30 to: 38}.! !
+!Behavior method!
+faceNorth
+	(direction _ [
+	(North
+		cover: (27 to: 31)
+		declaredAt: (27 to: 31)) new ] valueCoveringAll:
+		{33 to: 35})
+		cover: (14 to: 22)
+		declaredAt: (14 to: 22).! !
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+isValid
+	^ false coverAll:
+		{12 to: 16}.! !
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+moveForward: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) moveSouth ] valueCoveringAll:
+		{30 to: 38}.! !
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+moveForward: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) moveEast ] valueCoveringAll:
+		{30 to: 37}.! !
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+moveBackwards: aRover
+	[
+	(aRover
+		cover: (25 to: 30)
+		declaredAt: (16 to: 21)) moveWest ] valueCoveringAll:
+		{32 to: 39}.! !
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+moveBackwards: aRover
+	[
+	(aRover
+		cover: (25 to: 30)
+		declaredAt: (16 to: 21)) moveNorth ] valueCoveringAll:
+		{32 to: 40}.! !
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+rotateRight: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) faceSouth ] valueCoveringAll:
+		{30 to: 38}.! !
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+rotateLeft: aRover
+	[
+	(aRover
+		cover: (22 to: 27)
+		declaredAt: (13 to: 18)) faceNorth ] valueCoveringAll:
+		{29 to: 37}.! !
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+rotateRight: aRover
+	[
+	(aRover
+		cover: (23 to: 28)
+		declaredAt: (14 to: 19)) faceWest ] valueCoveringAll:
+		{30 to: 37}.! !
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!Behavior method!
+rotateLeft: aRover
+	[
+	(aRover
+		cover: (22 to: 27)
+		declaredAt: (13 to: 18)) faceEast ] valueCoveringAll:
+		{29 to: 36}.! !
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:52:38'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:53:52' prior: 50861046!
+test01RoverStaysInTheSamePlaceWithoutCommands
+
+	| rover |
+	
+	rover := MarsRover at: 1@2 facing: North.
+	
+	rover process: ''.
+	
+	self assert: true equals: (rover isAt: 1@2 facing: North).! !
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:53:53'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:56:37'!
+assertRoverInPosition: aPosition andDirection: aDirection afterReceiving: aMessage shouldBeAt: anExpectedPosition facing: anExpectedDirection
+
+	| rover |
+	
+	rover := MarsRover at: aPosition facing: aDirection.
+	
+	rover process: aMessage.
+	
+	self assert: true equals: (rover isAt: anExpectedPosition facing: anExpectedDirection).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:57:20' prior: 50862664!
+test01RoverStaysInTheSamePlaceWithoutCommands
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: '' shouldBeAt: 1@2 facing: North.! !
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:57:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:57:22'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:57:45' prior: 50861091!
+test02RoverMovesForwardFacingNorth
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'f' shouldBeAt: 1@3 facing: North.! !
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:57:46'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:58:02' prior: 50861107!
+test03RoverMovesBackwardsFacingNorth
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'b' shouldBeAt: 1@1 facing: North.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:58:23' prior: 50861154!
+test04RoverRotatesRightFacingNorthShouldFaceEast
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'r' shouldBeAt: 1@2 facing: East.! !
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:58:24'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:58:51' prior: 50861138!
+test05RoverRotatesLeftFacingNorthShouldFaceWest
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'l' shouldBeAt: 1@2 facing: West.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:59:24' prior: 50861172!
+test06RoverMovesForwardFacingWest
+
+	self assertRoverInPosition: 1@2 andDirection: West afterReceiving: 'f' shouldBeAt: 0@2 facing: West.
+! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:59:25' prior: 50863018!
+test06RoverMovesForwardFacingWest
+
+	self assertRoverInPosition: 1@2 andDirection: West afterReceiving: 'f' shouldBeAt: 0@2 facing: West.! !
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:59:26'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 15:59:48' prior: 50861187!
+test07RoverMovesBackwardsFacingWest
+
+	self assertRoverInPosition: 1@2 andDirection: West afterReceiving: 'b' shouldBeAt: 2@2 facing: West.! !
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 15:59:49'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:00:11' prior: 50861202!
+test08RoverRotatesLeftFacingWestShouldFaceSouth
+
+	self assertRoverInPosition: 1@2 andDirection: West afterReceiving: 'l' shouldBeAt: 1@2 facing: South.! !
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:00:13'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:00:37' prior: 50861218!
+test09RoverRotatesRightFacingWestShouldFaceNorth
+
+	self assertRoverInPosition: 1@2 andDirection: West afterReceiving: 'r' shouldBeAt: 1@2 facing: North.! !
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:00:38'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:01:04' prior: 50861250!
+test10RoverReceivingInvalidCommandShouldDoNothing
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'x' shouldBeAt: 1@2 facing: North.! !
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:01:05'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:01:23' prior: 50861285!
+test11RoverReceivingValidCommandsShouldExecuteAll
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'ff' shouldBeAt: 1@4 facing: North.! !
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:01:24'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:01:42' prior: 50861304!
+test12RoverReceivingInvalidCommandShouldEndExecution
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'fxf' shouldBeAt: 1@3 facing: North.! !
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:01:43'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:02:11' prior: 50861665!
+test13RoverMovesForwardFacingSouth
+	
+	self assertRoverInPosition: 1@2 andDirection: South afterReceiving: 'f' shouldBeAt: 1@1 facing: South.! !
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:02:12'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:02:33' prior: 50861722!
+test14RoverMovesForwardFacingEast
+	
+	self assertRoverInPosition: 1@2 andDirection: East afterReceiving: 'f' shouldBeAt: 2@2 facing: East.! !
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:02:35'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:02:42' prior: 50863671!
+test14RoverMovesForwardFacingEast
+	
+	self assertRoverInPosition: 1@2 andDirection: East afterReceiving: 'f' shouldBeAt: 2@2 facing: East.
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:02:43' prior: 50863751!
+test14RoverMovesForwardFacingEast
+	
+	self assertRoverInPosition: 1@2 andDirection: East afterReceiving: 'f' shouldBeAt: 2@2 facing: East.! !
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:02:45'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:02:48' prior: 50863759!
+test14RoverMovesForwardFacingEast
+	
+	self assertRoverInPosition: 1@2 andDirection: East afterReceiving: 'f' shouldBeAt: 2@2 facing: East.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:03:05' prior: 50861782!
+test15RoverMovesBackwardsFacingEast
+
+	self assertRoverInPosition: 1@2 andDirection: East afterReceiving: 'b' shouldBeAt: 0@2 facing: East.! !
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:03:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:03:07'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:03:30' prior: 50861800!
+test16RoverMovesBackwardsFacingSouth
+
+	self assertRoverInPosition: 1@2 andDirection: South afterReceiving: 'b' shouldBeAt: 1@3 facing: South.! !
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:03:31'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:03:48' prior: 50861876!
+test17RoverRotatesRightFacingEastShouldFaceSouth
+
+	self assertRoverInPosition: 1@2 andDirection: East afterReceiving: 'r' shouldBeAt: 1@2 facing: South.! !
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:03:49'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:04:04' prior: 50861895!
+test18RoverRotatesLeftFacingEastShouldFaceNorth
+	
+	self assertRoverInPosition: 1@2 andDirection: East afterReceiving: 'l' shouldBeAt: 1@2 facing: North.! !
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:04:05'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:04:29' prior: 50862155!
+test19RoverRotatesRightFacingSouthShouldFaceWest
+
+	self assertRoverInPosition: 1@2 andDirection: South afterReceiving: 'r' shouldBeAt: 1@2 facing: West.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'RI 10/6/2021 16:04:46' prior: 50862073!
+test20RoverRotatesLeftFacingSouthShouldFaceEast
+	
+	self assertRoverInPosition: 1@2 andDirection: South afterReceiving: 'l' shouldBeAt: 1@2 facing: East.! !
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:04:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'RI 10/6/2021 16:04:52'!
+PASSED!
+
+----QUIT----(6 October 2021 16:06:06) CuisUniversity-4532.image priorSource: 16885703!
+
+----STARTUP---- (7 October 2021 14:14:42) as C:\Users\DESKTOP-MIGUE\Desktop\CuisRover\CuisUniversity-4532.image!
+
+
+----End fileIn of \Users\DESKTOP-MIGUE\Desktop\CuisRover\MarsRover.st----!
+
+----STARTUP---- (7 October 2021 14:16:35) as C:\Users\DESKTOP-MIGUE\Desktop\CuisRover\CuisUniversity-4532.image!
+
+
+----End fileIn of \Users\DESKTOP-MIGUE\Desktop\CuisRover\MarsRover.st----!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'MR 10/7/2021 14:23:26'!
+PASSED!
+!MarsRoverTest methodsFor: 'other commands' stamp: 'MR 10/7/2021 14:32:46'!
+test10RoverReceivingOnlyInvalidCommandShouldDoNothing
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'x' shouldBeAt: 1@2 facing: North.! !
+
+!methodRemoval: MarsRoverTest #test10RoverReceivingInvalidCommandShouldDoNothing stamp: 'MR 10/7/2021 14:32:46'!
+test10RoverReceivingInvalidCommandShouldDoNothing
+
+	self assertRoverInPosition: 1@2 andDirection: North afterReceiving: 'x' shouldBeAt: 1@2 facing: North.!
+
+!testRun: #MarsRoverTest #test10RoverReceivingOnlyInvalidCommandShouldDoNothing stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingOnlyInvalidCommandShouldDoNothing stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'MR 10/7/2021 14:32:50'!
+PASSED!
+!MarsRover methodsFor: 'processing' stamp: 'MR 10/7/2021 14:36:24' prior: 50860176!
+process: aMessage
+
+	| aSequenceOfCommands |
+
+	aSequenceOfCommands := self getCommandsFromMessage: aMessage.
+	self processCommands: aSequenceOfCommands.! !
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingOnlyInvalidCommandShouldDoNothing stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'MR 10/7/2021 14:44:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'MR 10/7/2021 14:44:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'MR 10/7/2021 14:44:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'MR 10/7/2021 14:44:53'!
+PASSED!
+
+----STARTUP---- (7 October 2021 14:57:22) as C:\Users\DESKTOP-MIGUE\Desktop\CuisRover\CuisUniversity-4532.image!
+
+
+----End fileIn of \Users\DESKTOP-MIGUE\Desktop\CuisRover\MarsRover.st----!
+
+!testRun: #MarsRoverTest #test01RoverStaysInTheSamePlaceWithoutCommands stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02RoverMovesForwardFacingNorth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03RoverMovesBackwardsFacingNorth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04RoverRotatesRightFacingNorthShouldFaceEast stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05RoverRotatesLeftFacingNorthShouldFaceWest stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06RoverMovesForwardFacingWest stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07RoverMovesBackwardsFacingWest stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08RoverRotatesLeftFacingWestShouldFaceSouth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09RoverRotatesRightFacingWestShouldFaceNorth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10RoverReceivingOnlyInvalidCommandShouldDoNothing stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RoverReceivingValidCommandsShouldExecuteAll stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RoverReceivingInvalidCommandShouldEndExecution stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RoverMovesForwardFacingSouth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RoverMovesForwardFacingEast stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RoverMovesBackwardsFacingEast stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RoverMovesBackwardsFacingSouth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RoverRotatesRightFacingEastShouldFaceSouth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RoverRotatesLeftFacingEastShouldFaceNorth stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19RoverRotatesRightFacingSouthShouldFaceWest stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20RoverRotatesLeftFacingSouthShouldFaceEast stamp: 'MR 10/7/2021 14:58:32'!
+PASSED!

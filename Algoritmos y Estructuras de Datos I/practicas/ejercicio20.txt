@@ -1,0 +1,31 @@
+// asumimos x > y?
+// para todo n que x mod n = 0 => n > y
+// que sea verdadero cuando todos los divisores de x, sin contar el uno, son mayores que y.
+pred divisoresGrandes(x,y : Z) {
+	x > y ^ (Vn: Z)(1 < n <= x => (x mod n = 0 ^ n > y)
+}
+
+pred esCuadrado(x : Z) {
+	(En : Z)(1 < n < x => n * n = z)
+}
+
+pred sonCoprimos(x,y : Z) {
+	(x > y ^ x mod y != 0) v (y > x ^ y mod x != 0)
+}
+
+// que sea verdadero si y es el mayor primo que divide a x.
+// asumimos y < x
+pred mayorPrimoQueDivide(x: Z, y: Z) {
+	n(En: Z)(1 < n < z ^ esPrimo(n) ^ n > y)
+}
+
+predSonPrimosHermanos(x:Z, y:Z) {
+	(
+		(esPrimo(x) ^ esPrimo(y)) ^ 
+		(
+			((x > y) ^ n((En: Z)(y < n < x ^ esPrimo(n))))
+			v 
+			((y > x) ^ n((En: Z)(x < n < y ^ esPrimo(n))))
+		)
+	)
+}

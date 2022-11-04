@@ -1,0 +1,10 @@
+#ifndef RECUPERACIONINFORMACIONMUSICAL_GRAFICAR_H
+#define RECUPERACIONINFORMACIONMUSICAL_GRAFICAR_H
+
+#include "definiciones.h"
+
+void graficarRevertirAudio();
+void graficarLimpiarAudio();
+
+#endif //RECUPERACIONINFORMACIONMUSICAL_GRAFICAR_H
+

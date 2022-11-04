@@ -1,0 +1,29 @@
+Considero n = canal y m = |a|/n
+
+void magnitudAbsolutaMaxima(audio a, int canal, int profundidad, vector<int> &maximos, vector<int> &posicionesMaximos) {
+    for (int i = 0; i < canal; i++) {                   O(n)
+        int maximo = a[i];                              O(1)
+        int posMaximo = i;                              O(1)
+
+        for (int j = 1; j < a.size()/canal; j++) {      O(m)
+            int posActual = canal * j + i;              O(1)
+            int actual = a[posActual];                  O(1)
+
+            if (abs(actual) > abs(maximo)) {            O(1)
+                maximo = actual;                        O(1)
+                posMaximo = posActual;                  O(1)
+            }
+        }
+
+        maximos.push_back(maximo);                      O(1)
+        posicionesMaximos.push_back(posMaximo);         O(1)
+    }
+}
+
+Resumen:
+
+Tenemos un for que itera sobre la cantidad de canales que tiene el audio. O(canal)
+Luego, por cada canal, recorremos la cantidad de elementos que tiene menos el primero (ya que por default lo seteamos como maximo).
+Las unicas operaciones que realizamos dentro de la segunda iteracion son O(1) (abs, >, =, *, +).
+
+Complejidad: O(canal * |a|/canal) = O(|a|)

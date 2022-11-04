@@ -1,0 +1,15 @@
+2.4)
+Departamento(idDepartamento, nombre)
+Empleado(codigo, nombre, tipo, idDepto)
+- Docente(codigo, email, paginaWeb, esTiempoCompleto)
+- Administrativo(codigo, tipoAdministrativo)
+  - Coordinador(codigo, email)
+  - Tecnico(codigo, nivelEstudios)
+Telefono(codigoEmpleado, telefono)
+
+Estudiante(codigo, nombre, email, añoIngreso, idDepto, tipo)
+- Regular
+- Egresado(codigo, añoEgreso)
+
+Curso(idCurso, idProfesor, semestre)
+Cursa(idEstudiante, idCurso, nota)

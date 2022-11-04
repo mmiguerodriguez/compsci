@@ -1,0 +1,61 @@
+{
+  "nombre": "qkacd",
+  "ciudad": "gdbwy",
+  "jugadores": [
+    {
+      "nombre": "daewt",
+      "apellido": "btwuk",
+      "dorsal": 417,
+      "nacimiento": {
+        "dia": 701,
+        "mes": 512,
+        "anio": 980,
+      },
+    },
+    {
+      "nombre": "geqan",
+      "apellido": "kzsbx",
+      "dorsal": 188,
+      "nacimiento": {
+        "dia": 506,
+        "mes": 112,
+        "anio": 337,
+      },
+    },
+    {
+      "nombre": "ylyle",
+      "apellido": "mhaoc",
+      "dorsal": 888,
+      "nacimiento": {
+        "dia": 403,
+        "mes": 510,
+        "anio": 217,
+      },
+    },
+    {
+      "nombre": "zwbcu",
+      "apellido": "inhnv",
+      "dorsal": 976,
+      "nacimiento": {
+        "dia": 473,
+        "mes": 626,
+        "anio": 974,
+      },
+    },
+    {
+      "nombre": "jlolk",
+      "apellido": "ufcec",
+      "dorsal": 98,
+      "nacimiento": {
+        "dia": 180,
+        "mes": 63,
+        "anio": 807,
+      },
+    }
+  ],
+  "fundacion": {
+    "dia": 516,
+    "mes": 400,
+    "anio": 77,
+  },
+}

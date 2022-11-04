@@ -1,0 +1,32 @@
+Considero n = |as| y m[i] = |as[i]|
+
+void audiosSoftYHard(vector<audio> as, int profundidad, int longitud, int umbral, vector<audio>& soft, vector<audio>& hard) {
+    for (int i = 0; i < as.size(); i++) {           O(n)
+        int longitudParcial = 0;                    O(1)
+
+        for (int j = 0; j < as[i].size(); j++) {    O(m[i])
+            if (as[i][j] > umbral) {                O(1)
+                longitudParcial++;                  O(1)
+
+                if (longitudParcial > longitud) {   O(1)
+                    hard.push_back(as[i]);          O(1)
+                    break;                          O(1)
+                }
+            } else {
+                longitudParcial = 0;                O(1)
+            }
+        }
+
+        if (longitudParcial <= longitud) {          O(1)
+            soft.push_back(as[i]);                  O(1)
+        }
+    }
+}
+
+Resumen:
+
+Recorremos toda la lista de audios con un for. O(|as|)
+Luego con otro for recorremos todos los elementos de cada audio.
+Dentro del segundo for realizamos todas operaciones O(1) (push_back, if, ++, =).
+
+Complejidad: O(|as| * as[0] + ... + |as| * |as[n]|) = O(|as| * sum(|as[i]|))  

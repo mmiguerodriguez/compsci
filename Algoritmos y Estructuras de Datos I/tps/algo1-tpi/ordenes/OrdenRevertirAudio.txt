@@ -1,0 +1,26 @@
+Considero n = |a|
+
+audio revertirAudio(audio a, int canal, int profundidad) {		O(n)
+    audio res(a.size());						O(n)
+
+    for (int i = 0; i < a.size()/canal; i++) {				O(n/canal)
+        bloqueRevertido(a, i, canal, res);				O(canal)
+    }
+
+    return res;								O(1)
+}
+
+void bloqueRevertido(audio& a, int i, int canal, audio& res) {
+    for (int j = 0; j < canal; j++) {					O(canal)
+        res[a.size() - canal * (i + 1) + j] = a[canal * i + j];		O(1)
+    }
+}
+
+Resumen:
+
+Pasamos el parametro "a" por copia, esto es de complejidad O(n).
+Generamos un audio resultado de tamaño |a|, esto es de complejidad O(n).
+Iteramos |a|/canal veces (longitud de los canales).
+En bloqueRevertido iteramos por la cantidad de canales y hacemos operaciones O(1).
+
+Complejidad: O(n + n + n/canal * canal) = O(3n) = O(n)

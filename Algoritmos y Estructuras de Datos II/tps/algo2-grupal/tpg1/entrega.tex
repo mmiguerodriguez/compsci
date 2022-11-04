@@ -1,0 +1,103 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc} % para poder usar tildes en archivos UTF-8
+\usepackage[spanish]{babel} % para que comandos como \today den el resultado en castellano
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage{caratula}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,aed2-diseno}
+
+\parskip=5pt % 10pt es el tamaño de fuente
+
+\begin{document}
+
+\titulo{Simcity}
+\subtitulo{Trabajo practico grupal 1}
+
+\fecha{\today}
+
+\materia{Algoritmos y Estructuras de Datos II}
+\grupo{Grupo 17}
+
+\integrante{Rodriguez Celma, Guido}{374/19}{guido.rodriguez@outlook.com.ar}
+\integrante{Itzcovitz, Ryan}{169/19}{ryanitzcovitz@gmail.com}
+\integrante{Rodriguez, Miguel}{57/19}{mmiguerodriguez@gmail.com}
+
+\maketitle
+
+\tad{\tadNombre{rio} es \tadNombre{Tupla<bool, nat>}}
+\tad{\tadNombre{pos} es \tadNombre{Tupla<nat, nat>}}
+
+\begin{tad}{SimCity}
+\tadGeneros{simCity}
+
+\tadIgualdadObservacional{s}{s'}{simCity}{rios($s$) $\igobs$ rios($s'$) $\land$ construcciones($s$) $\igobs$ construcciones($s'$) $\yluego$ ($\forall c$: construccion)($c$ $\in$ construcciones($s$) $\impluego$ nivelDeConstruccion($s$, $c$) = nivelDeConstruccion($s'$, $c$))}
+
+\tadAlinearFunciones{nivelDeConstruccion}{simCity/s,constr/c}
+\tadObservadores
+\tadOperacion{rios}{simCity}{conj(rio)}{}
+\tadOperacion{construcciones}{simCity}{conj(constr)}{}
+\tadOperacion{nivelDeConstruccion}{simCity/s,constr/c}{nat}{$c$ $\in$ construcciones($s$)}
+
+\tadAlinearFunciones{nuevoTurno}{simcity/s, constr/c}
+\tadGeneradores
+\tadOperacion{generar}{conj(rio)}{simCity}{}
+\tadOperacion{nuevoTurno}{simCity}{simCity}{construccionesUltimoTurno(s) $>$ 0}
+\tadOperacion{construir}{simCity/s, constr/c}{simCity}{$\neg$ hayConstruccion($s$, posicion($c$)) $\land$ $\neg$ hayRio($s$, posicion($c$))}
+
+\tadAlinearFunciones{construccionesUltimoTurno}{simCity/s, constr/c}
+\tadOtrasOperaciones
+\tadOperacion{hayRio}{conj(rio), pos}{bool}{}
+\tadOperacion{hayConstruccion}{simCity, pos}{bool}{}
+\tadOperacion{construccionesUltimoTurno}{simCity}{nat}{}
+\tadOperacion{nivelMaxCercanos}{simCity/s, constr/c}{nat}{tipo($c$) = $``comercio"$}
+
+\tadAlinearAxiomas{nivelDeConstruccion(nuevoTurno($s$), $c$)}
+\tadAxiomas[]
+\tadAxioma{rios(generar($r$))}{$r$}
+\tadAxioma{rios(nuevoTurno($s$))}{rios($s$)}
+\tadAxioma{rios(construir($s$, $c$))}{rios($s$)}
+\tadAxioma{construcciones(generar($r$))}{$\emptyset$}
+\tadAxioma{construcciones(nuevoTurno($s$))}{construcciones($s$)}
+\tadAxioma{construcciones(construir($s$, $c$))}{Ag($c$, construcciones($s$))}
+\tadAxioma{hayRio($s$, $p$)}{hayRioAux(rios($s$), $p$)}
+\tadAxioma{hayConstruccion($s$, $p$)}{hayConstruccionAux(construcciones($s$), $p$)}
+\tadAxioma{nivelDeConstruccion(nuevoTurno($s$), $c$)}{1 + nivelDeConstruccion($s$, $c$)}
+\tadAxioma{nivelDeConstruccion(construir($s$, $c'$), $c$)}{\IF $c'$ = $c$ THEN {\IF tipo($c$) = $``casa"$ THEN 0 ELSE nivelMaxCercanos($s$, $c$) FI} ELSE nivelDeConstruccion($s$, $c$) FI}
+
+\tadAlinearAxiomas{nivelMaxCercanos($s$, $c$)}
+\tadAxioma{nivelMaxCercanos($s$, $c$)}{nivelMaxCercanosAux($s$, construcciones($s$), $c$)}
+
+\end{tad}
+
+\textbf{auxiliares}
+\tadAxioma{hayRioAux($rs$, $p$)}{\IF vacio?($rs$) THEN false ELSE {\IF [$\pi_1(dameUno($rs$))$ = 0 $\land$ $\pi_2(dameUno($rs$))$ = $\pi_2(p)$] $\lor$ [$\pi_1(dameUno($rs$))$ = 1 $\land$ $\pi_2(dameUno($rs$))$ = $\pi_1(p)$] THEN true ELSE hayRioAux(sinUno($rs$), $p$) FI} FI}
+
+\tadAxioma{hayConstruccionAux($cs$, $p$)}{\IF vacio?($cs$) THEN false ELSE {\IF $\pi_1(dameUno(cs)) = \pi_1(p) \land \pi_1(dameUno(cs)) = \pi_2(p)$ THEN true ELSE hayConstruccionAux(sinUno($cs$), $p$) FI} FI}
+
+\tadAxioma{distancia($c$, $c'$)}{max($\pi_1(posicion(c))$, $\pi_1(posicion(c'))$) - min($\pi_1(posicion(c))$, $\pi_1(posicion(c'))$) + max($\pi_2(posicion(c))$, $\pi_2(posicion(c'))$) - min($\pi_2(posicion(c))$, $\pi_2(posicion(c'))$)}
+
+\tadAxioma{nivelMaxCercanosAux($s$, $cs$, $c$)}{\IF vacio?($cs$) THEN 0 ELSE {\IF distancia(dameUno($cs$), $c$) $\leq$ 3 $\land$ tipo(dameUno($cs$)) = $``casa"$ THEN max(nivelDeContruccion($s$, dameUno($cs$)), nivelMaxCercanosAux($s$, sinUno($cs$), $c$)) ELSE nivelMaxCercanosAux($s$, sinUno($cs$), $c$) FI} FI}
+
+\newpage
+\begin{tad}{Construccion}
+\tadGeneros{constr}
+
+\tadIgualdadObservacional{c}{c'}{constr}{tipo($c$) = tipo($c'$) $\land$ posicion($c$) = posicion($c'$)}
+
+\tadAlinearFunciones{posicion}{constr}
+\tadObservadores
+\tadOperacion{tipo}{constr}{string}{}
+\tadOperacion{posicion}{constr}{pos}{}
+
+\tadAlinearFunciones{generar}{string}
+\tadGeneradores
+\tadOperacion{generar}{string}{pos}{}
+
+\tadOtrasOperaciones
+
+\tadAlinearAxiomas{posicion(generar($t$, $p$))}
+\tadAxiomas[]
+\tadAxioma{tipo(generar($t$, $p$))}{$t$}
+\tadAxioma{posicion(generar($t$, $p$))}{$p$}
+
+\end{tad}
+\end{document}

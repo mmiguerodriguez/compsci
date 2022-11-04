@@ -1,0 +1,8 @@
+.idea/
+.gdb_history
+*.o
+main
+tester
+salida.caso.1.txt
+salida.caso.2.txt
+salida.caso.propios.txt

@@ -1,0 +1,19 @@
+type playlist struct {
+	nombre string
+	canciones []cancion
+	duracion int
+}
+
+type cancion {
+	nombre string
+	genero string
+	featuring []string
+	album album
+}
+
+type album {
+	nombre string
+	artista string
+	nro_canciones int
+	ventas int
+}

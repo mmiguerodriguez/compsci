@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - MIR/graficar.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">MIR</a> - graficar.cpp<span style="font-size: 80%;"> (source / <a href="graficar.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">42</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-11-04 19:06:15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;graficar.h&quot;</a>
+<span class="lineNum">       2 </span>            : #include &quot;solucion.h&quot;
+<span class="lineNum">       3 </span>            : #include &lt;fstream&gt;
+<span class="lineNum">       4 </span>            : #include &lt;stdlib.h&gt;     /* srand, rand */
+<a name="5"><span class="lineNum">       5 </span>            : #include &lt;time.h&gt;       /* time */</a>
+<span class="lineNum">       6 </span>            : 
+<span class="lineNum">       7 </span><span class="lineNoCov">          0 : void graficarRevertirAudio() {</span>
+<span class="lineNum">       8 </span><span class="lineNoCov">          0 :     srand (time(NULL));</span>
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 :     audio a = {};</span>
+<span class="lineNum">      11 </span><span class="lineNoCov">          0 :     int profundidad = 4;</span>
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span><span class="lineNoCov">          0 :     ofstream fout;</span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 :     fout.open(&quot;graficos/revertirAudio.txt&quot;);</span>
+<span class="lineNum">      15 </span><span class="lineNoCov">          0 :     fout &lt;&lt; &quot;n\t&quot; &lt;&lt; &quot;tiempo&quot; &lt;&lt; endl;</span>
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 :     int s = 1000;</span>
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 :     for (int i = 1; i &lt; 100; i++) {</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :         int t = s * i;</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :         audio a(t);</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :         for (int j = 0; j &lt; t; j++) {</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :             a[j] = 1;</span>
+<span class="lineNum">      24 </span>            :         }
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :         int canal = floor(t/2);</span>
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :         double t0 = clock();</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         revertirAudio(a, canal, profundidad);</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         double t1 = clock();</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :         double tiempo = (double(t1-t0)/CLOCKS_PER_SEC);</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         fout &lt;&lt; t &lt;&lt; &quot;\t&quot; &lt;&lt; tiempo &lt;&lt; endl;</span>
+<span class="lineNum">      33 </span>            :     }
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     fout.close();</span>
+<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 : }</span></a>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 : void graficarLimpiarAudio() {</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     srand (time(NULL));</span>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     audio a = {};</span>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     int profundidad = 4;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     vector&lt;int&gt; outliers;</span>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     ofstream fout;</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     fout.open(&quot;graficos/limpiarAudio.txt&quot;);</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     fout &lt;&lt; &quot;n\t&quot; &lt;&lt; &quot;tiempo&quot; &lt;&lt; endl;</span>
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     int s = 1000;</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     for (int i = 0; i &lt; 100; i++) {</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         int t = s * i;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         audio a(t);</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :         for (int j = 0; j &lt; t; j++) {</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :             a[j] = 1;</span>
+<span class="lineNum">      57 </span>            :         }
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :         double t0 = clock();</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :         limpiarAudio(a, profundidad, outliers);</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :         double t1 = clock();</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :         double tiempo = (double(t1 - t0)/CLOCKS_PER_SEC);</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :         fout &lt;&lt; t &lt;&lt; &quot;\t&quot; &lt;&lt; tiempo &lt;&lt; endl;</span>
+<span class="lineNum">      64 </span>            :     }
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     fout.close();</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

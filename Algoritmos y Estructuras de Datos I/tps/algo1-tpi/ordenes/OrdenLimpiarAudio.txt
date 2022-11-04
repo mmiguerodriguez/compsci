@@ -1,0 +1,83 @@
+Considero n = |a|;
+
+void limpiarAudio(audio &a, int profundidad, vector<int> &outliers){				n=|a|
+    vector<int> ordenado = ordenar(a);								O(n^2)
+    audio copia_a = a;										O(n)
+    for(int i = 0; i < a.size(); i++){								O(n)
+        if(esOutlier(ordenado, a[i])){								O(1)
+            outliers.push_back(i);								O(1)
+        }
+    }
+    for(int i = 0; i < outliers.size(); i++){							O(|outliers|)
+        tuple<bool, int> aIzquierda = posNoOutIzq(copia_a, ordenado, outliers[i]);		O(2n)
+        tuple<bool, int> aDerecha = posNoOutDer(copia_a, ordenado, outliers[i]);		O(2n)
+        if(get<0>(aIzquierda) && get<0>(aDerecha)){						O(1)
+            int izq = get<1>(aIzquierda);							O(1)
+            int der = get<1>(aDerecha);								O(1)
+            a[outliers[i]] = floor((a[izq] + a[der]) / 2);					O(1)
+        }
+        if(get<0>(aIzquierda) && !(get<0>(aDerecha))){						O(1)
+            int izq = get<1>(aIzquierda);							O(1)
+            a[outliers[i]] = a[izq];								O(1)
+        }
+        if(!(get<0>(aIzquierda)) && get<0>(aDerecha)){						O(1)
+            int der = get<1>(aDerecha);								O(1)
+            a[outliers[i]] = a[der];								O(1)
+        }
+    }
+}
+
+
+bool esOutlier(audio &ord, int a){
+    int largo = ord.size();						O(1)
+    int umbral = ord[(floor(0.95 * largo))];				O(1)
+    if(a > umbral){							O(1)
+        return true;							O(1)
+    }
+    return false;							O(1)
+}
+
+tuple<bool, int> posNoOutIzq(audio a, vector<int> &o, int d){		O(n)
+    tuple<bool, int> res;						O(1)
+    while(d >= 0){							O(n)
+        if(!(esOutlier(o, a[d]))){					O(1)
+            get<0>(res) = true;						O(1)
+            get<1>(res) = d;						O(1)
+            return res;							O(1)
+        }
+        d--;								O(1)
+    }
+    get<0>(res) = false;						O(1)
+    get<1>(res) = d;							O(1)
+    return res;								O(1)	
+}
+
+tuple<bool, int> posNoOutDer(audio a, vector<int> &o, int d){		O(n)
+    tuple<bool, int> res;						O(1)
+    while(d < a.size()){						O(n)
+        if(!(esOutlier(o, a[d]))){					O(1)
+            get<0>(res) = true;						O(1)
+            get<1>(res) = d;						O(1)
+            return res;							O(1)
+        }
+        d++;								O(1)
+    }
+    get<0>(res) = false;						O(1)
+    get<1>(res) = d;							O(1)
+    return res;								O(1)
+}
+
+Resumen:
+
+a) codigo principal
+Para ordenar el vector "a" usamos el algoritmo de ordenamiento "selection sort" el cual tiene orden (n²).
+Hacemos una copia de la lista de a para poder modificar los outliers del audio original. 
+Para armar el vector "outliers" recorremos el audio original una vez (O(n)) preguntando por cada elemento si es o no outlier (O(1)), de serlo lo pusheamos al vector "outliers".
+	Luego para cada outlier O(|outliers|) preguntamos si tiene o no algún elemento no outlier a izquierda o derecha (en cada dirección es O(n)).
+Finalmente dependiendo del valor de verdad del punto anterior hacemos los reemplazos correspondientes en las posiciones outliers del audio original (O(1) pues son operaciones elementales).
+
+b) Funciones auxiliares
+En "esOutlier" usamos el audio ordenado (pasado por referencia) para preguntar si el elemento supera en valor al 95% de valores del audio original, esto tiene t.e de peor caso pertenece a O(1) pues usamos operaciones elentales.
+En "PosNoOutDer" y "PosNoOutIzq" recorremos el audio original (pasado por copia O(n)) desde la posicion del outlier dado hacia la izquierda o la derecha según corresponda, de encontrar un No Outlier devolvemos una tupla con "True" en la primer posicion y la posición del no Outlier correspondiente en la segunda, el cual de existir será el más cercano al outlier dado. En caso de no existir, la tupla devolvera "false" en la primer posición. En el peor caso recorremos toda la lista original por lo tanto el t.e de peor caso pertenece a O(2n).
+
+Complejidad: O(n² + n + |outliers| * (2n + 2n)) que pertenece a O(n²)

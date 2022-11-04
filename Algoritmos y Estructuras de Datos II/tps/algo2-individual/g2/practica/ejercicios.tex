@@ -1,0 +1,190 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage{enumerate, listings, enumitem, etoolbox}
+\usepackage[spanish]{babel}
+%\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,aed2-diseno}
+\usepackage{caratula}
+
+\newcommand\impluego{\opsub{\Rightarrow}{\scriptscriptstyle{L}}}
+\usepackage{color} % para snipets de codigo coloreados
+\usepackage{fancybox}  % para el sbox de los snipets de codigo
+
+\definecolor{litegrey}{gray}{0.94}
+\newenvironment{codesnippet}{%
+	\begin{Sbox}\begin{minipage}{\textwidth}\sffamily\small}%
+	{\end{minipage}\end{Sbox}%
+		\begin{center}%
+		\vspace{-0.4cm}\colorbox{litegrey}{\TheSbox}\end{center}\vspace{0.3cm}}
+
+% \AtBeginEnvironment{align}{\setcounter{equation}{0}}
+\parskip=5pt % 10pt es el tamaño de fuente
+\parindent=0pt
+
+\begin{document}
+
+\titulo{Guia 2}
+\subtitulo{Ejercicios obligatorios de la pr\'actica}
+
+\fecha{\today}
+
+\materia{Algoritmos y Estructuras de Datos II}
+
+\integrante{Rodriguez, Miguel}{57/19}{mmiguerodriguez@gmail.com}
+
+\maketitle
+
+\textbf{Ejercicio 1: Funciones polinomiales vs exponenciales}
+\begin{enumerate}[label=(\alph*)]
+	\item Sea $b$ $\in$ $\mathbb{R}$ tal que $b$ $\geq$ 2. Demostrar que $n$ $\leq$ $b^n$ para todo $n$ $\in$ $\mathbb{N}$, por inducci\'on en $n$.
+  \begin{align}
+		P(n) &\equiv n \leq 2^n \ \forall n \in \mathbb{N} \\
+		$c.b. $P(1) &\equiv 1 \leq 2^1 \equiv True \\
+    $sup. $P(n) &\equiv n \leq b^n \\
+    $q.v.q. $P(n + 1) &\equiv n + 1 \leq b^{n+1} \\
+    P(n + 1) &\equiv n + 1 \leq b^n \times b \\
+    n \leq b^n &\implies n \times b \leq b^n \times b \\
+    n + 1 &\leq n \times b \ \forall n, b \geq 2 \\
+		n + 1 &\leq b^{n+1} \\
+    P(n) &\implies P(n + 1) \ \ \ \blacksquare
+  \end{align}
+
+  \item Sea $b$ $\in$ $\mathbb{R}$ tal que $b$ $\geq$ 2. Demostrar que $x$ $\leq$ $b^{x+1}$ para todo $x$ $\in$ $\mathbb{R}_{\geq 0}$.
+  \begin{align}
+    x \leq \ &\lfloor x \rfloor + 1 \\
+		$Usamos (a) con $n = &\lfloor x \rfloor + 1 \in \mathbb{N} \\
+		&\lfloor x \rfloor + 1 \leq b^{\lfloor x \rfloor + 1} \\
+		$Ademas $x \leq &\lfloor x \rfloor + 1 \leq x + 1 \\
+		x \leq \ &\lfloor x \rfloor + 1 \leq b^{\lfloor x \rfloor + 1} \leq b^{x + 1} \\
+    \implies x &\leq b^{x + 1} \ \ \ \blacksquare
+  \end{align}
+
+  \item Sean $b \in \mathbb{R}$ tal que $b$ $>$ 1 y $k \in \mathbb{N}$ tal que $b^k \geq 2$. Demostrar que $\frac{x}{k} \leq b^{x+k}$ para todo $x \in \mathbb{R}_{\geq 0}$.
+	\begin{align}
+		&\frac{x}{k} \leq b^{k(\frac{x}{k} + 1)} \\
+		$Sabemos que $b^k &\geq 2$, renombramos $b^k = b \\
+		$Hacemos lo mismo con $ &\frac{x}{k} $ ya que $ x \in \mathbb{R}_{\geq 0}, \ k \in \mathbb{N}$, renombramos $ \frac{x}{k} = x \\
+		$Se cumple que $b \in &\mathbb{R} \geq 2$ y $x \in \mathbb{R}_{\geq 0}$ (hip\'otesis de (b))$ \\
+		&x \leq b^{x+1}$ (vale por (b))$ \ \ \ \blacksquare
+	\end{align}
+
+  \item Sean $b \in \mathbb{R}$ tal que $b$ $>$ 1 y $k \in \mathbb{N}$ tal que $b^k \geq 2$. Demostrar que $\forall x \in \mathbb{R}_{\geq 0}$ y $\forall n,p \in \mathbb{N}$ vale la siguiente desigualdad: $(\frac{x}{pk})^n \leq b^{n(\frac{x}{p} + k)}$.
+	\begin{align}
+		&P(n) \equiv \left(\frac{x}{pk}\right)^n \leq b^{n(\frac{x}{p} + k)} \\
+		&$c.b. Tomamos $\frac{x}{p} = j, j \in \mathbb{R}_{\geq 0} \\
+		&P(1) \equiv \frac{j}{k} \leq b^{j + k}$ (vale por (c))$ \\
+		&$sup. $P(n) \\
+		&$q.v.q. $P(n + 1) \equiv \left(\frac{x}{pk}\right)^{n + 1} \leq b^{(n+1)(\frac{x}{p} + k)}
+	\end{align}
+	Veamos que evaluar P(n + 1) es lo mismo que multiplicar ambos lados por sus mismos factores, entonces si la desigualdad se cumplia, al multiplicar ambos lados por lo mismo se va a seguir cumpliendo. \ \ \ $\blacksquare$
+
+  \item Demostrar que, vistas como funciones de $x \in \mathbb{R}_{\geq 0}$, vale: $x^p \in O(b^x)$ para toda base $b \in \mathbb{R}$ tal que $b > 1$ y para todo exponente $p \in \mathbb{N}$.
+	\begin{align}
+		&f(x) = x^{p} \land g(x) = b^{x} \\
+		&$q.v.q. $(\exists x_{0} \in \mathbb{N}, \ c \in \mathbb{R}_{\geq 0}) \ f(x) \leq c.g(x) \ \forall x \geq x_{0} \\
+		&$ Usamos (d) y tomamos $n = p \\
+		&\left(\frac{x}{pk}\right)^p \leq b^{p(\frac{x}{p}+k)} \\
+		&$Tomamos $\frac{x}{p} = x, x \in \mathbb{R}_{\geq 0} \\
+		&\frac{x^p}{k^p} \leq b^{px} \times b^{pk} \\
+		&x^p \leq b^{px} \times b^{pk} \times k^p \\
+		&$Veamos que aca podemos tomar $k^p$ y $b^{pk}$ como constantes$ \\
+		&x^p \leq b^{p^{x}} \times c_{1} \times c_{2} \\
+		&$Tomamos $b^p = b \\
+		&x^p \leq b^{x} \times c \\
+		&$Tomando $x_{0} = x$ vale que $x^p \in O(b^x) \ \ \ \blacksquare
+	\end{align}
+\end{enumerate}
+
+\textbf{Ejercicio 2: Complejidades}
+\begin{codesnippet}
+\begin{verbatim}
+function P(A : arreglo(nat)) -> B : arreglo(nat) {
+  n := tam(A)
+  M := 0
+  for i := 0 to n - 1 {
+    if (A[i] >= n) { A[i] := 0 } else { M := max(M, A[i]) }
+  }
+  B := nuevo arreglo(nat) desde 0 hasta M inclusive, inicializado en 0
+  for i := 0 to M {
+    for j := i to M {
+      B[A[i]] := 1 + B[A[i]] + B[A[j]]
+    }
+  }
+  return B
+}
+\end{verbatim}
+\end{codesnippet}
+
+En esta funcion, tenemos 2 variables importantes
+\begin{enumerate}
+  \item n: Tama\~no del arreglo A
+  \item M: Elemento mas grande en el arreglo A, menor a long(A). Est\'a acotado. (0 $\leq$ M $\leq$ n - 1)
+\end{enumerate}
+
+Sabemos que la primer iteracion va a ser $\Omega$(n) $\land$ O(n) = $\Theta$(n) ya que no importa que valores tenga n, siempre se va a iterar todo el tama\~no del arreglo A.
+\\ \\
+Generar el nuevo arreglo B inicializado en 0 es $\Theta$(M) pero va a estar acotado por la segunda iteracion.
+\\ \\
+Ademas, la segunda iteracion depende del M.
+\begin{enumerate}
+  \item Mejor caso: Ocurre cuando el segundo ciclo no se ejecuta nunca, es decir que el elemento m\'as grande en el arreglo A sea 0, o que A sea una lista con todos ceros. A = [0, 0, 0 ... , 0].
+  $$\sum_{i=0}^{M=0} 1 = 0 = \Omega(0)$$
+  \item Peor caso: el elemento m\'as grande del arreglo A es igual a n - 1 entonces vamos a tener M = n - 1. Reemplazando el M por su peor caso para calcular la complejidad nos da una sumatoria ya que en el primer for iteramos de 0 a M, y en el segundo desde i hasta M.
+  $$\sum_{i=0}^{M} (M - i) = \sum_{i=0}^{n-1} (n - 1 - i) = \sum_{i=0}^{n - 1} i = \frac{n \times (n - 1)}{2} = \frac{n^2 - n}{2} = O(n^2)$$
+\end{enumerate}
+
+Sumamos los ordenes de mejor y peor caso de cada iteracion
+
+$\implies$ P $\in$ $\Omega$(n) $\land$ P $\in$ O(n^2)
+\\
+
+\textbf{Ejercicio 3: Editor de Texto}
+\begin{enumerate}[label=\alph*)]
+	\item Escribir en castellano el invariante de representaci\'on
+	\begin{enumerate}[label=\arabic*.]
+		\item La pesta\~na seleccionada no puede estar en el conjunto de las pesta\~nas vac\'ias ni en el conjunto de las no vac\'ias.
+		\item Las pesta\~nas vac\'ias no pueden estar en las no vac\'ias y viceversa.
+		\item Todas las pesta\~nas estan definidas en alg\'un conjunto (vac\'ias, no vac\'ias o seleccionada).
+		\item Las pesta\~nas no vac\'ias no pueden tener su texto vac\'io.
+	\end{enumerate}
+	\item Escribir formalmente el invariante de representaci\'on \\ \\
+	Pasemos los predicados a l\'ogica de primer orden.
+	\begin{enumerate}[label=(\arabic*)]
+		\item $e.seleccionada \notin e.inactivasVac\'ias \ \land$ \\ $(\forall t: tupla<nat, string>)(t \in e.inactivasNoVac\'ias \implies \pi_{1}(t) \neq e.seleccionada)$
+		\item $(\forall i: nat)(\forall t: tupla<nat, string>)((i \in e.inactivasVac\'ias \land t \in e.inactivasNoVac\'ias) \implies i \neq \pi_{1}(t))$
+		\item $(\forall i: nat)(0 \leq i \leq long(e.inactivasVac\'ias) + long(e.inactivasNoVac\'ias) $\\$ \implies i = e.seleccionada \lor i \in e.inactivasVac\'ias \ \lor$ \\ $(\exists t: tupla<nat, string>)(t \in e.inactivasNoVac\'ias \land \pi_{1}(t) = i))$
+		\item $(\forall t: tupla<nat, string>)(t \in e.inactivasNoVac\'ias \implies \neg vac\'ia?(\pi_{2}(t)))$
+	\end{enumerate} \\
+	Luego, nuestro invariante de representaci\'on queda de la forma
+	\begin{center}
+		Rep: $\widehat{estr} \rightarrow boolean$ \\
+		Rep($e$) $\equiv (1) \land (2) \land (3) \land (4)$
+	\end{center}
+	\item Escribir formalmente la funci\'on de abstracci\'on
+	\begin{center}
+		Abs: $\widehat{estr} \ e \rightarrow$ Editor \{Rep($e$)\} \\
+		$(\forall e: \widehat{estr})$ Abs($e$) $=_{obs}$ $ed$: Editor $\mid$
+
+		$\#pesta\~nas(ed) = long(e.inactivasVac\'ias) + long(e.inactivasNoVac\'ias) + 1 \ \land_{L}$
+
+		$(\forall i: nat)(0 \leq i \leq \#pesta\~nas(ed) \impluego seleccionada?(ed, \ i) = true \Leftrightarrow e.seleccionada = i) \ \land$
+
+		$(\forall i: nat)(i \in e.inactivasVac\'ias \impluego texto(ed, i) = \ <>) \ \land$
+
+		$(\forall t: tupla<nat, string>)(t \in e.inactivasNoVac\'ias \impluego texto(ed, \ \pi_{1}(t)) = \pi_{2}(t)) \ \land$
+
+		$texto(ed, \ e.seleccionada) = e.anteriores \circ e.posteriores \ \land_{L}$
+
+		$posicionCursor(ed) = long(e.anteriores)$
+	\end{center}
+
+\begin{itemize}
+	\item La cantidad de pesta\~nas es la suma de las inactivas + 1.
+	\item La seleccionada es la que esta en e.seleccionada.
+	\item Los textos de las vac\'ias son vac\'ios, los de las no vac\'ias son su segundo valor de la tupla y el de la seleccionada es la suma de los anteriores con los posteriores.
+	\item La posicion del cursor es la longitud de los caracteres anteriores.
+\end {itemize}
+\end{enumerate}
+
+\end{document}

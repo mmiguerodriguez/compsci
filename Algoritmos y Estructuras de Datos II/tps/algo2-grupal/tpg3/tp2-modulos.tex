@@ -1,0 +1,85 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=1.5cm, top=3.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage{lastpage}
+\usepackage{aed2-tad,aed2-symb,aed2-itef,aed2-diseno}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{calc}
+\usepackage{algorithmicx, algpseudocode, algorithm}
+\usepackage{xcolor}
+
+\newcommand{\completar}{{\color{orange}completar}}
+\newcommand{\ccompletar}[1]{{\color{orange}completar: #1}}
+
+\begin{document}
+
+\section{Módulo Mapa}
+
+\begin{Interfaz}
+  
+  \textbf{se explica con}: \tadNombre{Mapa}
+
+  \textbf{géneros}: \TipoVariable{mapa}
+
+  \Titulo{Operaciones básicas de mapa}
+
+  \InterfazFuncion{crear}{\In{hs}{conj(Nat)},\In{vs}{conj(Nat)}}{mapa}%
+  {$res \igobs nuevoMapa(hs, vs)$}%
+    [$O(copy(hs), copy(vs))$]
+  [crea un mapa]
+
+    \completar
+
+\end{Interfaz}
+
+\begin{Representacion}
+  
+  \Titulo{Representación de mapa}
+
+  Un mapa contiene rios infinitos horizontales y verticales. Los rios se
+  representan como conjuntos lineales de naturales que indican la posición en
+  los ejes de los ríos.
+
+  \begin{Estructura}{mapa}[estr]
+    \begin{Tupla}[estr]
+      \tupItem{horizontales}{conj(Nat)}%
+      \tupItem{verticales}{conj(Nat)}%
+    \end{Tupla}
+
+  \end{Estructura}
+  
+    \Rep[estr]{true}
+
+    ~ 
+
+  \AbsFc[estr]{mapa}[m]{
+      horizontales(m) = $estr$.horizontales $\land$ 
+      verticales(m) = $estr$.verticales
+  }
+
+\end{Representacion}
+
+~
+
+\begin{Algoritmos}
+
+\begin{algorithm}[H]{\textbf{crear}(\In{hs}{conj(Nat)}, \In{vs}{conj(Nat)}) $\to$ $res$ : estr}
+\begin{algorithmic}[1]
+    \State $estr.horizontales \gets hs$
+    \State $estr.verticales \gets vs$
+    \State \Return estr
+    \medskip
+    \Statex \underline{Complejidad:} $O(copy(hs) + copy(vs))$
+\end{algorithmic}
+\end{algorithm}
+
+\completar
+  
+\end{Algoritmos}
+
+\end{document}

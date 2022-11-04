@@ -1,0 +1,16 @@
+CMakeCache.txt
+CMakeFiles/*
+cmake_install.cmake
+correrTests
+*.o
+*.a
+*.obj
+*.exe
+.idea/
+cmake-build-debug
+*.fls
+*.aux
+*.fdb_latexmk
+*.log
+*.gz
+.out

@@ -1,0 +1,5 @@
+type materia struct {
+	nombre string
+	codigo int
+	dictada_en facultad
+}

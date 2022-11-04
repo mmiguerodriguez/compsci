@@ -1,0 +1,4 @@
+build
+python/instancias/
+python/resultados/.ipynb_checkpoints/
+python/.ipynb_checkpoints/*

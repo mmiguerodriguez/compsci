@@ -1,0 +1,13 @@
+type empresa struct {
+	nombre struct
+	cuil int
+	empleados []empleado
+}
+
+type empleado struct {
+	nombre string
+	apellido string
+	dni int
+	cuit int
+	trabaja_en empresa
+}

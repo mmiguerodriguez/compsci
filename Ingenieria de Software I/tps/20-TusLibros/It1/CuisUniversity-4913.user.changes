@@ -1,0 +1,1209 @@
+
+
+----QUIT----(13 October 2021 15:20:10) CuisUniversity-4913.image priorSource: 14638157!
+
+----STARTUP---- (13 October 2021 15:20:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-4913.image!
+
+
+----QUIT----(13 October 2021 15:20:10) CuisUniversity-4913.image priorSource: 18661767!
+
+----STARTUP---- (13 October 2021 15:21:02) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-4913.image!
+
+
+----QUIT----(13 October 2021 15:21:02) CuisUniversity-4913.image priorSource: 18661997!
+
+----QUIT----(13 October 2021 15:26:07) CuisUniversity-4913.image priorSource: 14638157!
+
+----STARTUP---- (13 October 2021 15:26:08) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-4913.image!
+
+
+----QUIT----(13 October 2021 15:26:08) CuisUniversity-4913.image priorSource: 18661767!
+
+----STARTUP---- (28 October 2021 20:56:18) as C:\Users\DESKTOP-MIGUE\Desktop\windows64\CuisUniversity-4913.image!
+
+
+TestCase subclass: #TusLibrosTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #TusLibrosTests category: 'TusLibros' stamp: 'MR 10/28/2021 21:00:33'!
+TestCase subclass: #TusLibrosTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #RestService category: 'TusLibros' stamp: 'MR 10/28/2021 21:14:08'!
+Object subclass: #RestService
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!TusLibrosTests methodsFor: 'nil' stamp: 'MR 10/28/2021 21:14:49'!
+test01NewCartStartsEmpty
+
+	| clientId clientPassword cart |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	
+	cart _ RestService createCartFor: clientId withPassword: clientPassword.
+
+	self assert: 0 equals: cart size.! !
+
+!testRun: #TusLibrosTests #test01NewCartStartsEmpty stamp: 'MR 10/28/2021 21:14:51'!
+ERROR!
+!TusLibrosTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:15:29' prior: 50914862!
+test01NewCartStartsEmpty
+
+	| clientId clientPassword cart restAPI |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+
+	self assert: 0 equals: cart size.! !
+
+!testRun: #TusLibrosTests #test01NewCartStartsEmpty stamp: 'MR 10/28/2021 21:15:33'!
+ERROR!
+!RestService methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:15:40'!
+createCartFor: aString withPassword: aString2 
+	self shouldBeImplemented.! !
+!RestService methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:16:37' prior: 50914890!
+createCartFor: aClientId withPassword: aClientPassword 
+	^OrderedCollection new.! !
+
+!testRun: #TusLibrosTests #test01NewCartStartsEmpty stamp: 'MR 10/28/2021 21:16:38'!
+PASSED!
+
+!testRun: #TusLibrosTests #test01NewCartStartsEmpty stamp: 'MR 10/28/2021 21:16:38'!
+PASSED!
+!TusLibrosTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:16:51' prior: 50914876!
+test01NewCartStartsEmpty
+
+	| clientId clientPassword cart restAPI |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+
+	self assert: 0 equals: cart size.! !
+
+!classRenamed: #TusLibrosTests as: #RestServiceTests stamp: 'MR 10/28/2021 21:17:14'!
+Smalltalk renameClassNamed: #TusLibrosTests as: #RestServiceTests!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:19:08'!
+test02CartWithABookIsNotEmpty
+
+	| clientId clientPassword cart restAPI |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+
+	self assert: 0 equals: cart size.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:19:14' prior: 50914908!
+test01NewCartStartsEmpty
+
+	| clientId clientPassword cart restAPI |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+
+	self assert: true equals: cart isEmpty.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:20:25' prior: 50914924!
+test02CartWithABookIsNotEmpty
+
+	| clientId clientPassword cart restAPI bookIsbn |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	bookIsbn _ '10'.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+	restAPI addToCart: cart bookIsbn: bookIsbn bookQuantity: 1. 
+	
+	self assert: 1 equals: cart size.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:20:37' prior: 50914948!
+test02CartWithABookIsNotEmpty
+
+	| clientId clientPassword cart restAPI bookIsbn |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	bookIsbn _ '10'.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+	restAPI addToCart: cart bookIsbn: bookIsbn bookQuantity: 1. 
+	
+	self assert: 1 equals: cart size.! !
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'MR 10/28/2021 21:20:38'!
+ERROR!
+!RestService methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:20:48'!
+addToCart: anOrderedCollection bookIsbn: aString bookQuantity: aSmallInteger 
+	self shouldBeImplemented.! !
+!RestService methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:21:29' prior: 50914980!
+addToCart: aCart bookIsbn: aBookIsbn bookQuantity: aBookQuantity 
+	aCart add: aBookIsbn.! !
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'MR 10/28/2021 21:21:30'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'MR 10/28/2021 21:21:30'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'MR 10/28/2021 21:21:30'!
+PASSED!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:21:34' prior: 50914963!
+test02CartWithABookIsNotEmpty
+
+	| clientId clientPassword cart restAPI bookIsbn |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	bookIsbn _ '10'.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+	restAPI addToCart: cart bookIsbn: bookIsbn bookQuantity: 1.
+	
+	self assert: 1 equals: cart size.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:23:30'!
+test03CartWithABookHasTheBookInItsList
+
+	| clientId clientPassword cart restAPI bookIsbn |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	bookIsbn _ '10'.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+	restAPI addToCart: cart bookIsbn: bookIsbn bookQuantity: 1.
+	
+	self assert: cart first equals: bookIsbn.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:24:25' prior: 50915017!
+test03CartWithABookHasTheBookInItsList
+
+	| clientId clientPassword cart restAPI bookIsbn cartList |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	bookIsbn _ '10'.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+	restAPI addToCart: cart bookIsbn: bookIsbn bookQuantity: 1.
+	cartList _ restAPI listCart: cart.
+	
+	self assert: '0|10|1' equals: cartList.! !
+
+----End fileIn of C:\Users\DESKTOP-MIGUE\Desktop\windows64\Packages\TerseGuide.pck.st----!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'MR 10/28/2021 21:31:07' prior: 50914936!
+test01NewCartStartsEmpty
+
+	| clientId clientPassword cart restAPI result |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	result _ restAPI createCartFor: clientId withPassword: clientPassword.
+	"0|ID_DEL_CARRITO"
+	
+	self assert: (OrderedCollection with: 0 with: 0) equals: result.
+	self assert: true equals: (restAPI cart: result at: 2) isEmpty.! !
+
+----STARTUP---- (1 November 2021 14:14:57) as /home/ryan/UBA/Ing1/cuis2/CuisUniversity-4913.image!
+
+
+----End fileIn of /home/ryan/UBA/Ing1/cuis2/TusLibros.st----!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:15:55'!
+FAILURE!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:15:55'!
+PASSED!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:15:55'!
+ERROR!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'RI 11/1/2021 14:18:39'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:18:33' prior: 50915923!
+test01NewCartStartsEmpty
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self assert: (OrderedCollection new) equals: cart books.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:18:58' prior: 50915938!
+test02CartWithABookIsNotEmpty
+
+	| clientId clientPassword cart restAPI bookIsbn |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	bookIsbn _ '10'.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+	restAPI addToCart: cart bookIsbn: bookIsbn bookQuantity: 1.
+	
+	"self assert: 1 equals: cart size."! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:19:02' prior: 50915952!
+test03CartWithABookHasTheBookInItsList
+
+	| clientId clientPassword cart restAPI bookIsbn cartList |
+	
+	clientId _ 'unCliente'.
+	clientPassword _ 'unaPassword'.
+	restAPI _ RestService new.
+	
+	bookIsbn _ '10'.
+	
+	cart _ restAPI createCartFor: clientId withPassword: clientPassword.
+	restAPI addToCart: cart bookIsbn: bookIsbn bookQuantity: 1.
+	cartList _ restAPI listCart: cart.
+	
+	"self assert: '0|10|1' equals: cartList."! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:19:09'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:19:19'!
+books
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:19:41' prior: 50916050!
+books
+	^OrderedCollection new.! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:19:42'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:19:42'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:19:42'!
+PASSED!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:19:42'!
+ERROR!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:19:42'!
+ERROR!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:19:48'!
+ERROR!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:19:50'!
+ERROR!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:20:01' prior: 50916016!
+test02CartWithABookIsNotEmpty! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:20:06' prior: 50916031!
+test03CartWithABookHasTheBookInItsList! !
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:20:08'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:20:08'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:20:08'!
+PASSED!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:20:08'!
+PASSED!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:21:51' prior: 50916081!
+test02CartWithABookIsNotEmpty
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1'.
+	
+	self assert: (OrderedCollection with: '1') equals: cart books.! !
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:21:53'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:22:01'!
+addBook: aString 
+	self shouldBeImplemented.! !
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'RI 11/1/2021 14:22:36'!
+Object subclass: #Cart
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:22:30' prior: 50916115!
+addBook: anISBN 
+	
+	books add: anISBN.! !
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:22:40'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:23:10' overrides: 16896425!
+initialize
+
+	books _ OrderedCollection new.! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:23:13'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:23:13'!
+FAILURE!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:23:13'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:23:13'!
+FAILURE!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:23:34'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:23:34'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:23:34'!
+FAILURE!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:23:34'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:23:34'!
+FAILURE!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:24:04' prior: 50916054!
+books
+	^books.! !
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:24:06'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:24:10'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:24:10'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:24:10'!
+PASSED!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:24:10'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:24:21'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:24:21'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:24:21'!
+PASSED!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:24:21'!
+PASSED!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:25:13' prior: 50916104!
+test02CartWithABookIsNotEmpty
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	
+	self assert: (OrderedCollection with: '1') equals: cart books.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:28:20'!
+addBook: anISBN withAmount: anAmount
+	
+	books add: (anISBN, '|', anAmount).! !
+
+!methodRemoval: Cart #addBook: stamp: 'RI 11/1/2021 14:28:25'!
+addBook: anISBN 
+	
+	books add: anISBN.!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:28:37' prior: 50916199!
+test02CartWithABookIsNotEmpty
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	
+	self assert: (OrderedCollection with: '1|2') equals: cart books.! !
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:28:38'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:28:57' prior: 50916207!
+addBook: anISBN withAmount: anAmount
+	
+	books add: (anISBN, '|', anAmount asString).! !
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:29:05'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:29:05'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:29:05'!
+PASSED!
+
+!testRun: #RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:29:05'!
+PASSED!
+
+!methodRemoval: RestServiceTests #test03CartWithABookHasTheBookInItsList stamp: 'RI 11/1/2021 14:31:08'!
+test03CartWithABookHasTheBookInItsList!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:31:54'!
+test03! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:34:38' prior: 50916251!
+test03! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:35:53' prior: 50916255!
+test03
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: (OrderedCollection with: '1|4') equals: cart books.! !
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:35:54'!
+FAILURE!
+
+----End fileIn of /home/ryan/UBA/Ing1/cuis2/Packages/TerseGuide.pck.st----!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:38:00' prior: 50916134 overrides: 16896425!
+initialize
+
+	books _ Dictionary new.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:41:13' prior: 50916228!
+addBook: anISBN withAmount: anAmount
+	
+	| y |
+	y _ books at: anISBN ifAbsent: [
+		^books add: anISBN->anAmount. 
+	].
+
+	books at: anISBN put: y + anAmount.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:41:47' prior: 50919200!
+addBook: anISBN withAmount: anAmount
+	
+	| originalAmount |
+	originalAmount _ books at: anISBN ifAbsent: [
+		^books add: anISBN->anAmount. 
+	].
+
+	books at: anISBN put: originalAmount + anAmount.! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:41:52'!
+FAILURE!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:41:52'!
+FAILURE!
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:41:52'!
+FAILURE!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:42:22'!
+FAILURE!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:42:29' prior: 50916009!
+test01NewCartStartsEmpty
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self assert: true equals: cart books isEmpty .! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:42:32'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:42:32'!
+FAILURE!
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:42:32'!
+FAILURE!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:44:05'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:44:05'!
+FAILURE!
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:44:05'!
+FAILURE!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:44:08' prior: 50916216!
+test02CartWithABookIsNotEmpty
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	
+	self assert: 2 equals: (cart books at: '1').
+	self assert: 1 equals: cart books size.! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:44:10'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:44:10'!
+PASSED!
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:44:10'!
+FAILURE!
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:44:10'!
+FAILURE!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:44:44' prior: 50916259!
+test03
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: 4 equals: (cart books at: '1').! !
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:44:45'!
+PASSED!
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:44:53'!
+PASSED!
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:44:53'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:44:53'!
+PASSED!
+
+!testRun: #RestServiceTests #test03 stamp: 'RI 11/1/2021 14:44:53'!
+PASSED!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:45:13' prior: 50919273!
+test03
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: 4 equals: (cart books at: '1').
+	self assert: 1 equals: cart books size.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:46:44'!
+test03AddingExistingBookToACartModifesAmount
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: 4 equals: (cart books at: '1').
+	self assert: 1 equals: cart books size.! !
+
+!methodRemoval: RestServiceTests #test03 stamp: 'RI 11/1/2021 14:46:44'!
+test03
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: 4 equals: (cart books at: '1').
+	self assert: 1 equals: cart books size.!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:47:01'!
+test03AddingExistingBookToACartModifiesAmount
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: 4 equals: (cart books at: '1').
+	self assert: 1 equals: cart books size.! !
+
+!methodRemoval: RestServiceTests #test03AddingExistingBookToACartModifesAmount stamp: 'RI 11/1/2021 14:47:01'!
+test03AddingExistingBookToACartModifesAmount
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: 4 equals: (cart books at: '1').
+	self assert: 1 equals: cart books size.!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:50:05' prior: 50919323!
+test03AddingExistingBookToACartModifiesAmount
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	cart addBook: '2' withAmount: 3.		
+	
+	self assert: '1|4|2|3' equals: (cart listBooks).! !
+
+!testRun: #RestServiceTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 14:50:07'!
+ERROR!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:47:01' prior: 50919345!
+test03AddingExistingBookToACartModifiesAmount
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	
+	self assert: 4 equals: (cart books at: '1').
+	self assert: 1 equals: cart books size.! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:50:46'!
+test04AddingExistingBookToACartModifiesAmount
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	cart addBook: '2' withAmount: 3.		
+	
+	self assert: '1|4|2|3' equals: (cart listBooks).! !
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:50:58'!
+test04
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	cart addBook: '2' withAmount: 3.		
+	
+	self assert: '1|4|2|3' equals: (cart listBooks).! !
+
+!methodRemoval: RestServiceTests #test04AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 14:51:00'!
+test04AddingExistingBookToACartModifiesAmount
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	cart addBook: '2' withAmount: 3.		
+	
+	self assert: '1|4|2|3' equals: (cart listBooks).!
+
+!testRun: #RestServiceTests #test04 stamp: 'RI 11/1/2021 14:51:03'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:51:09'!
+listBooks
+	self shouldBeImplemented.! !
+
+'test' removeLast.!
+
+'test' copyFrom: 0 to: ('test' size - 1)!
+
+'test' copyFrom: 1 to: ('test' size - 1)!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:56:30' prior: 50919404!
+listBooks
+	| result |
+	
+	result _ ''.
+	
+	books keysAndValuesDo: [:aKey :aValue | result _ result , aKey ,  '|' , aValue, '|'].
+	
+	^result copyFrom: 1 to: (result size - 1).! !
+
+!testRun: #RestServiceTests #test04 stamp: 'RI 11/1/2021 14:56:32'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 14:56:52' prior: 50919412!
+listBooks
+	| result |
+	
+	result _ ''.
+	
+	books keysAndValuesDo: [:aKey :aValue | result _ result , aKey ,  '|' , aValue asString , '|'].
+	
+	^result copyFrom: 1 to: (result size - 1).! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 14:56:52'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 14:56:52'!
+PASSED!
+
+!testRun: #RestServiceTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 14:56:52'!
+PASSED!
+
+!testRun: #RestServiceTests #test04 stamp: 'RI 11/1/2021 14:56:52'!
+FAILURE!
+
+!testRun: #RestServiceTests #test04 stamp: 'RI 11/1/2021 14:56:52'!
+FAILURE!
+
+a := Dictionary new.!
+
+a at: '1' put: 2!
+
+a!
+
+a at: '2' put: 2.!
+
+a!
+
+a at: '2' put: 3.!
+
+a!
+
+cart _ Cart new.!
+
+cart addBook: '1' withAmount: 2.!
+
+cart addBook: '1' withAmount: 2.	!
+
+cart addBook: '2' withAmount: 3.		!
+
+cart!
+
+cart books!
+
+a _ ''.!
+
+cart books  keysDo: [:aKey | a _ a, aKey].!
+
+a!
+
+cart addBook: '3' withAmount: 3.		!
+
+a _ ''.!
+
+cart books  keysDo: [:aKey | a _ a, aKey].!
+
+a!
+
+cart addBook: '0' withAmount: 3.		!
+
+a _ ''.!
+
+cart books  keysDo: [:aKey | a _ a, aKey].!
+
+a!
+
+cart keys !
+
+cart books keys!
+
+cart books asSortedCollection!
+
+cart books sort!
+
+cart books!
+
+cart books asArray !
+
+cart books keys !
+
+cart books keys sort!
+
+cart books keys sort do: [:aKey | a _ a , aKey , '|' , cart books at: aKey]!
+
+cart books keys sort do: [:aKey | a _ a , aKey , '|' , cart books at: aKey asString]!
+
+cart books keys sort do: [:aKey | a _ a , aKey , '|' , (cart books at: aKey asString)]!
+
+cart books keys sort do: [:aKey | a _ a , aKey , '|' , ((cart books at: aKey) asString)]!
+
+a!
+
+a _ ''.!
+
+cart books keys sort do: [:aKey | a _ a , aKey , '|' , ((cart books at: aKey) asString)]!
+
+a!
+
+cart _ Cart new.!
+
+cart addBook: '1' withAmount: 2.
+cart addBook: '1' withAmount: 2.	
+cart addBook: '2' withAmount: 3.		
+a _ ''.!
+
+cart books keys sort do: [:aKey | a _ a , aKey , '|' , ((cart books at: aKey) asString)]!
+
+a!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:14:46' prior: 50919423!
+listBooks
+	| result |
+	
+	result _ ''.
+	
+	books keys sort do: [:aKey | result _ result , aKey , '|' , (books at: aKey) asString , '|'].
+	
+	^result copyFrom: 1 to: (result size - 1).! !
+
+!testRun: #RestServiceTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 15:14:47'!
+PASSED!
+
+!testRun: #RestServiceTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 15:14:47'!
+PASSED!
+
+!testRun: #RestServiceTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 15:14:47'!
+PASSED!
+
+!testRun: #RestServiceTests #test04 stamp: 'RI 11/1/2021 15:14:47'!
+PASSED!
+!RestServiceTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:16:15'!
+test04CartWithMultipleBooksListsThemCorrectly
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	cart addBook: '2' withAmount: 3.		
+	
+	self assert: '1|4|2|3' equals: (cart listBooks).! !
+
+!methodRemoval: RestServiceTests #test04 stamp: 'RI 11/1/2021 15:16:15'!
+test04
+
+	| cart |
+	
+	cart _ Cart new.
+	cart addBook: '1' withAmount: 2.
+	cart addBook: '1' withAmount: 2.	
+	cart addBook: '2' withAmount: 3.		
+	
+	self assert: '1|4|2|3' equals: (cart listBooks).!
+
+!classRenamed: #RestServiceTests as: #CartTests stamp: 'RI 11/1/2021 15:20:12'!
+Smalltalk renameClassNamed: #RestServiceTests as: #CartTests!
+!CartTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:24:26'!
+test05
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].! !
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:24:30'!
+FAILURE!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:24:42'!
+FAILURE!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:24:54'!
+FAILURE!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:24:58'!
+FAILURE!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:25:07'!
+FAILURE!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:25:40'!
+FAILURE!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:27:52' prior: 50919208!
+addBook: anISBN withAmount: anAmount
+	
+	| originalAmount |
+	
+	(anAmount < 1) ifTrue: [self error: Cart cannotAddInvalidAmountOfBooks].
+	
+	originalAmount _ books at: anISBN ifAbsent: [
+		^books add: anISBN->anAmount. 
+	].
+
+	books at: anISBN put: originalAmount + anAmount.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 15:27:56'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 15:27:56'!
+PASSED!
+
+!testRun: #CartTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 15:27:56'!
+PASSED!
+
+!testRun: #CartTests #test04CartWithMultipleBooksListsThemCorrectly stamp: 'RI 11/1/2021 15:27:56'!
+PASSED!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:27:56'!
+ERROR!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:27:56'!
+ERROR!
+!Cart class methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:28:04'!
+cannotAddInvalidAmountOfBooks
+	self shouldBeImplemented.! !
+
+	^'Cannot add 0 or less books.'.!
+!Cart class methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:28:40' prior: 50919583!
+cannotAddInvalidAmountOfBooks
+	
+	^'Cannot add 0 or less books.'.! !
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:28:41'!
+FAILURE!
+!CartTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:29:22' prior: 50919532!
+test05
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:29:46' prior: 50919555!
+addBook: anISBN withAmount: anAmount
+	
+	| originalAmount |
+	
+	(anAmount < 1) ifTrue: [^self error: Cart cannotAddInvalidAmountOfBooks].
+	
+	originalAmount _ books at: anISBN ifAbsent: [
+		^books add: anISBN->anAmount. 
+	].
+
+	books at: anISBN put: originalAmount + anAmount.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 15:29:47'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 15:29:47'!
+PASSED!
+
+!testRun: #CartTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 15:29:47'!
+PASSED!
+
+!testRun: #CartTests #test04CartWithMultipleBooksListsThemCorrectly stamp: 'RI 11/1/2021 15:29:47'!
+PASSED!
+
+!testRun: #CartTests #test05 stamp: 'RI 11/1/2021 15:29:47'!
+PASSED!
+!CartTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:30:58'!
+test05AddNegativeOrZeroAmountInCartThrowsError
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].! !
+
+!methodRemoval: CartTests #test05 stamp: 'RI 11/1/2021 15:30:58'!
+test05
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].!
+!CartTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:31:07'!
+test05AddingNegativeOrZeroAmountInCartThrowsError
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].! !
+
+!methodRemoval: CartTests #test05AddNegativeOrZeroAmountInCartThrowsError stamp: 'RI 11/1/2021 15:31:07'!
+test05AddNegativeOrZeroAmountInCartThrowsError
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].!
+!CartTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:32:37'!
+test06
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 1.5.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].! !
+
+!testRun: #CartTests #test06 stamp: 'RI 11/1/2021 15:32:39'!
+FAILURE!
+
+1.5 isInteger !
+
+1 isInteger !
+
+0 isInteger !
+
+-1 isInteger !
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:34:21' prior: 50919607!
+addBook: anISBN withAmount: anAmount
+	
+	| originalAmount |
+	
+	((anAmount < 1) or: [anAmount isInteger not ]) ifTrue: [^self error: Cart cannotAddInvalidAmountOfBooks].
+	
+	originalAmount _ books at: anISBN ifAbsent: [
+		^books add: anISBN->anAmount. 
+	].
+
+	books at: anISBN put: originalAmount + anAmount.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 15:34:22'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 15:34:22'!
+PASSED!
+
+!testRun: #CartTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 15:34:22'!
+PASSED!
+
+!testRun: #CartTests #test04CartWithMultipleBooksListsThemCorrectly stamp: 'RI 11/1/2021 15:34:22'!
+PASSED!
+
+!testRun: #CartTests #test05AddingNegativeOrZeroAmountInCartThrowsError stamp: 'RI 11/1/2021 15:34:22'!
+PASSED!
+
+!testRun: #CartTests #test06 stamp: 'RI 11/1/2021 15:34:22'!
+PASSED!
+!Cart methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:34:29' prior: 50919689!
+addBook: anISBN withAmount: anAmount
+	
+	| originalAmount |
+	
+	((anAmount < 1) or: [anAmount isInteger not]) ifTrue: [^self error: Cart cannotAddInvalidAmountOfBooks].
+	
+	originalAmount _ books at: anISBN ifAbsent: [
+		^books add: anISBN->anAmount. 
+	].
+
+	books at: anISBN put: originalAmount + anAmount.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 15:34:31'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 15:34:31'!
+PASSED!
+
+!testRun: #CartTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 15:34:31'!
+PASSED!
+
+!testRun: #CartTests #test04CartWithMultipleBooksListsThemCorrectly stamp: 'RI 11/1/2021 15:34:31'!
+PASSED!
+
+!testRun: #CartTests #test05AddingNegativeOrZeroAmountInCartThrowsError stamp: 'RI 11/1/2021 15:34:31'!
+PASSED!
+
+!testRun: #CartTests #test06 stamp: 'RI 11/1/2021 15:34:31'!
+PASSED!
+!Cart class methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:34:49' prior: 50919589!
+cannotAddInvalidAmountOfBooks
+	
+	^'Invalid amount of book to be added.'.! !
+
+!testRun: #CartTests #test01NewCartStartsEmpty stamp: 'RI 11/1/2021 15:34:50'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'RI 11/1/2021 15:34:50'!
+PASSED!
+
+!testRun: #CartTests #test03AddingExistingBookToACartModifiesAmount stamp: 'RI 11/1/2021 15:34:50'!
+PASSED!
+
+!testRun: #CartTests #test04CartWithMultipleBooksListsThemCorrectly stamp: 'RI 11/1/2021 15:34:50'!
+PASSED!
+
+!testRun: #CartTests #test05AddingNegativeOrZeroAmountInCartThrowsError stamp: 'RI 11/1/2021 15:34:50'!
+PASSED!
+
+!testRun: #CartTests #test06 stamp: 'RI 11/1/2021 15:34:50'!
+PASSED!
+!CartTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:35:31'!
+test06AddingNotIntegerAmountOfBooksThrowsError
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 1.5.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].! !
+
+!methodRemoval: CartTests #test06 stamp: 'RI 11/1/2021 15:35:31'!
+test06
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 1.5.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].!
+!CartTests methodsFor: 'as yet unclassified' stamp: 'RI 11/1/2021 15:35:50'!
+test05AddingNegativeOrZeroAmountOfBooksThrowsError
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].! !
+
+!methodRemoval: CartTests #test05AddingNegativeOrZeroAmountInCartThrowsError stamp: 'RI 11/1/2021 15:35:50'!
+test05AddingNegativeOrZeroAmountInCartThrowsError
+
+	| cart |
+	
+	cart _ Cart new.
+	
+	self should: [cart addBook: '1' withAmount: 0.]
+		raise: Error
+		withExceptionDo: [:anError | self assert: Cart cannotAddInvalidAmountOfBooks equals: anError messageText].!
+
+!classRemoval: #RestService stamp: 'RI 11/1/2021 15:46:44'!
+Object subclass: #RestService
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+----SNAPSHOT----(1 November 2021 15:47:05) CuisUniversity-4913.image priorSource: 18696138!

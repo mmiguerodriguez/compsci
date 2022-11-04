@@ -1,0 +1,108 @@
+﻿data MiDato a b = C1 (MiDato a b) | C2 a  | C3 a b
+
+
+foldMiDato :: (c -> c) -> (a -> c) -> (a -> b-> c)-> MiDato a b -> c 
+
+
+ cuenta (C1 (C1 (C2 1))) ~> 2
+ cuenta (C2 3) ~> 0
+cuenta (C3 4) ~> 0
+
+
+
+
+cuenta = foldMiDato (\b -> 1 + b) (\x -> 0) (\y z ->0)
+
+
+unMiDato :: MiDato Int Int
+
+
+unMiDato  = C1 unMidato
+
+
+cuenta unMidato
+
+
+foldMiDato (\b -> 1) (\x -> 0) (\y z ->0)
+
+
+foldMiDato fC1 fC2 fC3 (C1 x) = fC1 (foldMiDato fC1 fC2 fC3 x)
+ 
+----
+true false 
+
+
+(pred 0) -> 0
+
+
+------
+
+
+{x1:rho,...,xn:rho} > N : sigma   
+----------------------------------------
+      {} > ?N : sigma
+
+
+
+
+W(?U) = {} >  S?N : Ssigma
+
+
+W(U) = Gamma |- N: sigma
+
+
+x1=delta …..xn= tau  in gamma  delta=tau…=rho
+
+
+
+
+{l1=x, l2 = succ(y)}.l1
+
+
+-------------------
+
+
+{p(X1, f(Y1,a)}, {~p(Y2,X2)} 
+
+
+Y2 <- X1
+X2 <- f(Y1,a)
+
+
+
+
+
+
+
+
+foo (X):!,fail
+foo (a).
+
+
+
+
+g(X) ,not(X)
+
+
+[x | xs]
+
+
+P(+X)
+P(-X)
+
+
+X==S
+
+
+
+
+-----------
+
+
+o = [ l= sigma(x) x.l]
+
+
+no existe o’ tq o -> o’
+
+
+fix id

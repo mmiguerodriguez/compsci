@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - MIR/solucion.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">MIR</a> - solucion.cpp<span style="font-size: 80%;"> (source / <a href="solucion.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">101</td>
+            <td class="headerCovTableEntry">101</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-11-04 19:06:15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;solucion.h&quot;</a>
+<span class="lineNum">       2 </span>            : #include &quot;auxiliares.h&quot;
+<span class="lineNum">       3 </span>            : #include &lt;algorithm&gt;
+<span class="lineNum">       4 </span>            : #include &lt;fstream&gt;
+<span class="lineNum">       5 </span>            : using namespace std;
+<a name="6"><span class="lineNum">       6 </span>            : </a>
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span><span class="lineCov">         10 : bool formatoValido(audio &amp;a, int canal, int profundidad){</span>
+<span class="lineNum">       9 </span><span class="lineCov">         10 :     return a.size() &gt; 0 &amp;&amp; (a.size() % canal) == 0 &amp;&amp; todosEnRango(a, profundidad);</span>
+<a name="10"><span class="lineNum">      10 </span>            : }</a>
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span><span class="lineCov">          7 : audio replicar(audio a, int canal, int profundidad) {</span>
+<span class="lineNum">      13 </span><span class="lineCov">          7 :     audio res;</span>
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span><span class="lineCov">         50 :     for (int i = 0; i &lt; a.size(); i++) {</span>
+<span class="lineNum">      16 </span><span class="lineCov">        130 :         for (int j = 1; j &lt;= canal; j++) {</span>
+<span class="lineNum">      17 </span><span class="lineCov">         87 :             res.push_back(a[i]);</span>
+<span class="lineNum">      18 </span>            :         }
+<span class="lineNum">      19 </span>            :     }
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">          7 :     return res;</span>
+<a name="22"><span class="lineNum">      22 </span>            : }</a>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">        110 : audio revertirAudio(audio a, int canal, int profundidad) {</span>
+<span class="lineNum">      25 </span><span class="lineCov">        110 :     audio res(a.size());</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">        341 :     for (int i = 0; i &lt; a.size()/canal; i++) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">        231 :         bloqueRevertido(a, i, canal, res);</span>
+<span class="lineNum">      29 </span>            :     }
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span><span class="lineCov">        110 :     return res;</span>
+<a name="32"><span class="lineNum">      32 </span>            : }</a>
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span><span class="lineCov">         11 : void magnitudAbsolutaMaxima(audio a, int canal, int profundidad, vector&lt;int&gt; &amp;maximos, vector&lt;int&gt; &amp;posicionesMaximos) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">         70 :     for (int i = 0; i &lt; canal; i++) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">         59 :         int maximo = a[i];</span>
+<span class="lineNum">      37 </span><span class="lineCov">         59 :         int posMaximo = i;</span>
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span><span class="lineCov">        124 :         for (int j = 1; j &lt; a.size()/canal; j++) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">         65 :             int posActual = canal * j + i;</span>
+<span class="lineNum">      41 </span><span class="lineCov">         65 :             int actual = a[posActual];</span>
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span><span class="lineCov">         65 :             if (abs(actual) &gt; abs(maximo)) {</span>
+<span class="lineNum">      44 </span><span class="lineCov">         32 :                 maximo = actual;</span>
+<span class="lineNum">      45 </span><span class="lineCov">         32 :                 posMaximo = posActual;</span>
+<span class="lineNum">      46 </span>            :             }
+<span class="lineNum">      47 </span>            :         }
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">         59 :         maximos.push_back(maximo);</span>
+<span class="lineNum">      50 </span><span class="lineCov">         59 :         posicionesMaximos.push_back(posMaximo);</span>
+<span class="lineNum">      51 </span>            :     }
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">         11 : }</span></a>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span><span class="lineCov">          6 : audio redirigir(audio a, int canal, int profundidad) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          6 :     audio result(a.size(), 0);</span>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineCov">         50 :     for (int i = 0; i &lt; a.size(); i++) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">         44 :         if (canal == 1 &amp;&amp; estaEnCanal(i, 2, 2)) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">         12 :             result[i] = clip(a[i], a[i - 1], profundidad);</span>
+<span class="lineNum">      60 </span><span class="lineCov">         32 :         } else if (canal == 2 &amp;&amp; estaEnCanal(i, 1, 2)) {</span>
+<span class="lineNum">      61 </span><span class="lineCov">         10 :             result[i] = clip(a[i + 1], a[i], profundidad);</span>
+<span class="lineNum">      62 </span>            :         } else {
+<span class="lineNum">      63 </span><span class="lineCov">         22 :             result[i] = a[i];</span>
+<span class="lineNum">      64 </span>            :         }
+<span class="lineNum">      65 </span>            :     }
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">          6 :     return result;</span>
+<a name="68"><span class="lineNum">      68 </span>            : }</a>
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineCov">          6 : void bajarCalidad(vector&lt;audio&gt; &amp; as, int profundidad1, int profundidad2) {</span>
+<span class="lineNum">      71 </span><span class="lineCov">         18 :     for (int i = 0; i &lt; as.size(); i++) {</span>
+<span class="lineNum">      72 </span><span class="lineCov">         92 :         for (int j = 0; j &lt; as[i].size(); j++) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">         80 :             as[i][j] = floor(as[i][j]/pow(2, profundidad1 - profundidad2));</span>
+<span class="lineNum">      74 </span>            :         }
+<span class="lineNum">      75 </span>            :     }
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          6 : }</span></a>
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span><span class="lineCov">         12 : void audiosSoftYHard(vector&lt;audio&gt; as, int profundidad, int longitud, int umbral, vector&lt;audio&gt;&amp; soft, vector&lt;audio&gt;&amp; hard) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">         48 :     for (int i = 0; i &lt; as.size(); i++) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">         36 :         int longitudParcial = 0;</span>
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span><span class="lineCov">        182 :         for (int j = 0; j &lt; as[i].size(); j++) {</span>
+<span class="lineNum">      83 </span><span class="lineCov">        160 :             if (as[i][j] &gt; umbral) {</span>
+<span class="lineNum">      84 </span><span class="lineCov">         92 :                 longitudParcial++;</span>
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span><span class="lineCov">         92 :                 if (longitudParcial &gt; longitud) {</span>
+<span class="lineNum">      87 </span><span class="lineCov">         14 :                     hard.push_back(as[i]);</span>
+<span class="lineNum">      88 </span><span class="lineCov">         14 :                     break;</span>
+<span class="lineNum">      89 </span>            :                 }
+<span class="lineNum">      90 </span>            :             } else {
+<span class="lineNum">      91 </span><span class="lineCov">         68 :                 longitudParcial = 0;</span>
+<span class="lineNum">      92 </span>            :             }
+<span class="lineNum">      93 </span>            :         }
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            :         // Si termino de iterar y longitudParcial &gt; longitud =&gt; seguro hice push a hard
+<span class="lineNum">      96 </span>            :         // caso contrario, pusheo a soft la lista
+<span class="lineNum">      97 </span><span class="lineCov">         36 :         if (longitudParcial &lt;= longitud) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">         22 :             soft.push_back(as[i]);</span>
+<span class="lineNum">      99 </span>            :         }
+<span class="lineNum">     100 </span>            :     }
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">         12 : }</span></a>
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span><span class="lineCov">         12 : void reemplazarSubAudio(audio&amp; a, audio a1, audio a2, int profundidad) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">         12 :     int hasta = a1.size() - 1;</span>
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span><span class="lineCov">        100 :     for (int i = 0; i &lt; a.size(); i++) {</span>
+<span class="lineNum">     107 </span><span class="lineCov">         88 :         if (iguales(a, a1, i, i + hasta)) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">         10 :             reemplazar(a, a2, i, i + hasta);</span>
+<span class="lineNum">     109 </span>            :         }
+<span class="lineNum">     110 </span>            :     }
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         12 : }</span></a>
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span><span class="lineCov">          8 : void maximosTemporales(audio a, int profundidad, vector&lt;int&gt; tiempos, vector&lt;int&gt;&amp; maximos, vector&lt;pair&lt;int,int&gt;&gt; &amp;intervalos) {</span>
+<span class="lineNum">     114 </span><span class="lineCov">         24 :     for (int i = 0; i &lt; tiempos.size(); i++) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">         16 :         int intervalo0 = 0;</span>
+<span class="lineNum">     116 </span><span class="lineCov">         16 :         int intervalo1 = 0;</span>
+<span class="lineNum">     117 </span><span class="lineCov">         16 :         int maximo = a[0];</span>
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span><span class="lineCov">        156 :         for (int j = 0; j &lt; a.size(); j++) {</span>
+<span class="lineNum">     120 </span><span class="lineCov">        140 :             if (a[j] &gt; maximo) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">         84 :                 maximo = a[j];</span>
+<span class="lineNum">     122 </span>            :             }
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span><span class="lineCov">        140 :             if ((j + 1) % tiempos[i] == 0) { // no quedan mas tiempos (en este intervalo)</span>
+<span class="lineNum">     125 </span><span class="lineCov">         36 :                 intervalo0 = j - tiempos[i] + 1;</span>
+<span class="lineNum">     126 </span><span class="lineCov">         36 :                 intervalo1 = j;</span>
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span><span class="lineCov">         36 :                 pair&lt;int, int&gt; intervalo = {intervalo0, intervalo1};</span>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span><span class="lineCov">         36 :                 maximos.push_back(maximo);</span>
+<span class="lineNum">     131 </span><span class="lineCov">         36 :                 intervalos.push_back(intervalo);</span>
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span><span class="lineCov">         36 :                 if (j + 1 &lt; a.size()) {</span>
+<span class="lineNum">     134 </span><span class="lineCov">         32 :                     maximo = a[j + 1];</span>
+<span class="lineNum">     135 </span>            :                 }
+<span class="lineNum">     136 </span>            :             } else {
+<span class="lineNum">     137 </span><span class="lineCov">        104 :                 if (j + 1 == a.size()) {</span>
+<span class="lineNum">     138 </span><span class="lineCov">         12 :                     intervalo0 = j - (j % tiempos[i]);</span>
+<span class="lineNum">     139 </span><span class="lineCov">         12 :                     intervalo1 = j + (tiempos[i] - (j % tiempos[i])) - 1;</span>
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span><span class="lineCov">         12 :                     pair&lt;int, int&gt; intervalo = {intervalo0, intervalo1};</span>
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span><span class="lineCov">         12 :                     maximos.push_back(maximo);</span>
+<span class="lineNum">     144 </span><span class="lineCov">         12 :                     intervalos.push_back(intervalo);</span>
+<span class="lineNum">     145 </span>            :                 }
+<span class="lineNum">     146 </span>            :             }
+<span class="lineNum">     147 </span>            :         }
+<span class="lineNum">     148 </span>            :     }
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          8 : }</span></a>
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span><span class="lineCov">          8 : void limpiarAudio(audio &amp;a, int profundidad, vector&lt;int&gt; &amp;outliers){</span>
+<span class="lineNum">     152 </span><span class="lineCov">         16 :     vector&lt;int&gt; ordenado = ordenar(a);</span>
+<span class="lineNum">     153 </span><span class="lineCov">        346 :     for(int i = 0; i &lt; a.size(); i++){</span>
+<span class="lineNum">     154 </span><span class="lineCov">        338 :         if(esOutlier(ordenado, a[i])){</span>
+<span class="lineNum">     155 </span><span class="lineCov">         12 :             outliers.push_back(i);</span>
+<span class="lineNum">     156 </span>            :         }
+<span class="lineNum">     157 </span>            :     }
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span><span class="lineCov">         20 :     for(int i = 0; i &lt; outliers.size(); i++){</span>
+<span class="lineNum">     160 </span><span class="lineCov">         12 :         tuple&lt;bool, int&gt; aIzquierda = posNoOutIzq(a, ordenado, outliers[i]);</span>
+<span class="lineNum">     161 </span><span class="lineCov">         12 :         tuple&lt;bool, int&gt; aDerecha = posNoOutDer(a, ordenado, outliers[i]);;</span>
+<span class="lineNum">     162 </span><span class="lineCov">         12 :         if(get&lt;0&gt;(aIzquierda) &amp;&amp; get&lt;0&gt;(aDerecha)){</span>
+<span class="lineNum">     163 </span><span class="lineCov">          6 :             int izq = get&lt;1&gt;(aIzquierda);</span>
+<span class="lineNum">     164 </span><span class="lineCov">          6 :             int der = get&lt;1&gt;(aDerecha);</span>
+<span class="lineNum">     165 </span><span class="lineCov">          6 :             a[outliers[i]] = floor((a[izq] + a[der]) / 2);</span>
+<span class="lineNum">     166 </span>            :         }
+<span class="lineNum">     167 </span><span class="lineCov">         12 :         if(get&lt;0&gt;(aIzquierda) &amp;&amp; !(get&lt;0&gt;(aDerecha))){</span>
+<span class="lineNum">     168 </span><span class="lineCov">          4 :             int izq = get&lt;1&gt;(aIzquierda);</span>
+<span class="lineNum">     169 </span><span class="lineCov">          4 :             a[outliers[i]] = a[izq];</span>
+<span class="lineNum">     170 </span>            :         }
+<span class="lineNum">     171 </span><span class="lineCov">         12 :         if(!(get&lt;0&gt;(aIzquierda)) &amp;&amp; get&lt;0&gt;(aDerecha)){</span>
+<span class="lineNum">     172 </span><span class="lineCov">          2 :             int der = get&lt;1&gt;(aDerecha);</span>
+<span class="lineNum">     173 </span><span class="lineCov">          2 :             a[outliers[i]] = a[der];</span>
+<span class="lineNum">     174 </span>            :         }
+<span class="lineNum">     175 </span>            :     }
+<span class="lineNum">     176 </span><span class="lineCov">          8 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

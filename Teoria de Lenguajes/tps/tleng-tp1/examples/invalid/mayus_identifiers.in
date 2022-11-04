@@ -1,0 +1,5 @@
+type Persona struct {
+	Nombre string
+	Apellido string
+	DNI int
+}

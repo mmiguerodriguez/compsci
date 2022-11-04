@@ -1,0 +1,2 @@
+main:	SET R0, 0x52
+	SET R1, 0x33

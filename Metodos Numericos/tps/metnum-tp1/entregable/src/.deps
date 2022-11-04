@@ -1,0 +1,60 @@
+{
+    ".deps_version": 2,
+    "g++ -o ./tp ./main.o ./Clases/Equipo.o ./Clases/Torneo.o ./Clases/Partida.o ./Clases/SistemaLineal.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "Clases": "input-4b89efe556f6780ff72cad044b2cbedb",
+        "Clases/Equipo.o": "input-8c88b5365dca0f4e10269eab0f72ef40",
+        "Clases/Partida.o": "input-b233365b83b3bdabcf4aa7fab5a17471",
+        "Clases/SistemaLineal.o": "input-01771770bb58e74c952286721bb60a09",
+        "Clases/Torneo.o": "input-f73b5bda6ad4251bd965be40e6a82e1d",
+        "main.o": "input-2d35a423f0b1ae1a69940fb343f579c7",
+        "tp": "input-b90d9dcfb616af07eb4517e5bdf6c875"
+    },
+    "g++ -std=c++11 -O2 -c ./Clases/Equipo.cpp -o ./Clases/Equipo.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "Clases": "input-4b89efe556f6780ff72cad044b2cbedb",
+        "Clases/Equipo.cpp": "input-5692067754e2e015e679910a4689ecdc",
+        "Clases/Equipo.o": "input-8c88b5365dca0f4e10269eab0f72ef40"
+    },
+    "g++ -std=c++11 -O2 -c ./Clases/Partida.cpp -o ./Clases/Partida.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "Clases": "input-4b89efe556f6780ff72cad044b2cbedb",
+        "Clases/Partida.cpp": "input-9bbee9d778347eea348009a1cf7c850e",
+        "Clases/Partida.o": "input-b233365b83b3bdabcf4aa7fab5a17471"
+    },
+    "g++ -std=c++11 -O2 -c ./Clases/SistemaLineal.cpp -o ./Clases/SistemaLineal.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "Clases": "input-4b89efe556f6780ff72cad044b2cbedb",
+        "Clases/SistemaLineal.cpp": "input-0cddc348241e96213533b300b69ec2d9",
+        "Clases/SistemaLineal.o": "input-01771770bb58e74c952286721bb60a09"
+    },
+    "g++ -std=c++11 -O2 -c ./Clases/Torneo.cpp -o ./Clases/Torneo.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "Clases": "input-4b89efe556f6780ff72cad044b2cbedb",
+        "Clases/Torneo.cpp": "input-eae59cf1037e776e4a7bf2e5af1c57bf",
+        "Clases/Torneo.o": "input-f73b5bda6ad4251bd965be40e6a82e1d"
+    },
+    "g++ -std=c++11 -O2 -c ./build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp -o ./build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "build": "input-b0da275520918e23dd615e2a747528f1",
+        "build/CMakeFiles": "input-4fd4936f90a4ebc9095ceb19b5e871cc",
+        "build/CMakeFiles/3.16.3": "input-736227017947759eb1a8003f16a0a8cf",
+        "build/CMakeFiles/3.16.3/CompilerIdCXX": "input-4e33b4c9976a83e326c7a9fac9a79dcd",
+        "build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp": "input-3119332551b1f4dafd1cdf803cce84df",
+        "build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.o": "input-ae400241a7032c6e94e4cfe5e5ad2d16"
+    },
+    "g++ -std=c++11 -O2 -c ./cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp -o ./cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "cmake-build-debug": "input-e36f7ec4e1e8bb54d83ee43753c80ee4",
+        "cmake-build-debug/CMakeFiles": "input-1e4dafea075612f51a5791bc0ac33d51",
+        "cmake-build-debug/CMakeFiles/3.17.3": "input-2f650511eb17ad2688d703d389bc6265",
+        "cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX": "input-ea4c5f40468cc185e4c7c584980ff0d7",
+        "cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp": "input-3119332551b1f4dafd1cdf803cce84df",
+        "cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.o": "input-ae400241a7032c6e94e4cfe5e5ad2d16"
+    },
+    "g++ -std=c++11 -O2 -c ./main.cpp -o ./main.o": {
+        ".": "input-5058f1af8388633f609cadb75a75dc9d",
+        "main.cpp": "input-e34f7a80a4cf1fa3ee1bcff7a750bce8",
+        "main.o": "input-2d35a423f0b1ae1a69940fb343f579c7"
+    }
+}

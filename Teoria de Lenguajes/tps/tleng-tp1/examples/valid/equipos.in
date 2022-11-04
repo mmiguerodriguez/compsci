@@ -1,0 +1,19 @@
+type equipo struct {
+	nombre string
+	ciudad string
+	jugadores []jugador
+	fundacion fecha
+}
+
+type jugador struct {
+	nombre string
+	apellido string
+	dorsal int
+	nacimiento fecha
+}
+
+type fecha struct {
+	dia int
+	mes int
+	año int
+}

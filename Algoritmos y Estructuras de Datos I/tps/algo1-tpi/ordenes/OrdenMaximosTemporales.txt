@@ -1,0 +1,48 @@
+Considero m = |tiempos| y n = |a|
+Tiempo de peor caso pertenece a O(m * n)
+
+void maximosTemporales(audio a, int profundidad, vector<int> tiempos, vector<int>& maximos, vector<pair<int,int>> &intervalos) {
+    for (int i = 0; i < tiempos.size(); i++) {                                      O(m)
+        int intervalo0 = 0;                                                         O(1)
+        int intervalo1 = 0;                                                         O(1)
+        int maximo = a[0];                                                          O(1)
+
+        for (int j = 0; j < a.size(); j++) {                                        O(n)
+            if (a[j] > maximo) {                                                    O(1)
+                maximo = a[j];                                                      O(1)
+            }
+
+            if ((j + 1) % tiempos[i] == 0) {                                        O(1)
+                intervalo0 = j - tiempos[i] + 1;                                    O(1)
+                intervalo1 = j;                                                     O(1)
+
+                pair<int, int> intervalo = {intervalo0, intervalo1};                O(1)
+
+                maximos.push_back(maximo);                                          O(1)
+                intervalos.push_back(intervalo);                                    O(1)
+
+                if (j + 1 < a.size()) {                                             O(1)
+                    maximo = a[j + 1];                                              O(1)
+                }
+            } else {
+                if (j + 1 == a.size()) {                                            O(1)
+                    intervalo0 = j - (j % tiempos[i]);                              O(1)
+                    intervalo1 = j + (tiempos[i] - (j % tiempos[i])) - 1;           O(1)
+
+                    pair<int, int> intervalo = {intervalo0, intervalo1};            O(1)
+
+                    maximos.push_back(maximo);                                      O(1)
+                    intervalos.push_back(intervalo);                                O(1)
+                }
+            }
+        }
+    }
+}
+
+Resumen:
+
+Primero iteramos por la cantidad de tiempos que tenemos. O(|tiempos|)
+Luego, por cada tiempo, iteramos sobre la longitud del audio. O(|a|)
+Dentro de la segunda iteracion tenemos operaciones que son O(1) (>, +, -, =, push_back, pair<int, int>).
+
+Complejidad: O(|tiempos| * |a|) 

@@ -1,0 +1,59 @@
+Considero n = |a|
+
+void reemplazarSubAudio(audio &a, audio &a1, audio &a2){	
+    int hasta = a1.size() - 1;					O(1)
+    for(int i = 0; i < a.size(); i++){				O(n)
+        if(iguales(a,a1,i,i + hasta)){				O(|a1|)
+            reemplazar(a, a2, i, i + hasta);			O(2(n-|a1|) + |a2|)
+        }
+    }
+}
+
+bool iguales(audio &a, audio &a1, int d, int h){
+    if(h < a.size()){						O(1)
+        while(d <= h){						O(|a1|)
+            if(a[d] != a1[d]){					O(1)
+                return false;					O(1)
+            }
+            d++;						O(1)
+        }return true;						O(1)
+    }else{
+        return false;						O(1)
+    }
+}
+
+void reemplazar(audio &a, audio &a2, int d, int h){
+    audio res;							O(1)
+    int i = 0;							O(1)
+
+    while(i < d) {						O(n - |a1|)
+        res.push_back(a[i]);					O(1)
+        i++;							O(1)
+    }
+
+    i = 0;							O(1)
+
+    while (i < a2.size()) {					O(|a2|)
+        res.push_back(a2[i]);					O(1)
+        i++;							O(1)
+    }
+
+    h++;							O(1)
+    while(h < a.size()) {					O(n - |a1|)
+        res.push_back(a[h]);					O(1)
+        h++;							O(1)
+    }
+
+    a = res;							O(1)
+}
+
+Resumen:
+a) Codigo principal
+Recorremos una vez el audio original (O(n)) y para cada posición i preguntamos si a[i] hasta a[|a1|-1] es igual a "a1" (cada pregunta tiene orden O(|a1|).
+	Si son iguales reemplazamos las posiciones correspondiente en "a" por las de "a2".
+
+b) Funciones Auxiliares
+En "iguales" preguntamos si a[i] hasta a[|a1|-1] es igual a "a1", en caso de pasarnos de rango con a[|a1|-1], devolvemos false.
+En "Reemplazar" armamos un vector auxiliar "res" al cual pusheamos primero los valores del audio original hasta la posicion en que empiezan a ser iguales "a" y "a1" (en peor caso están al final), luego pusheamos los valores de "a2" y finalmente los valores restantes de "a1" (de haberlos, en peor caso están al princípio)
+
+Complejidad: O(n * |a1| * (2(n - |a1|) + |a2|) que pertenece a O(n²)

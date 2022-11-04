@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/ejercicios.h
+iostream
+-
+vector
+-
+string
+-
+cmath
+-
+fstream
+-
+ctime
+-
+
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/ejercicios_guia.cpp
+ejercicios_guia.h
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/ejercicios_guia.h
+ejercicios.h
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/ejercicios.h
+
+/home2/clinux01/Desktop/L06-Complejidad/Ejercicios/ejercicios_guia.h
+iostream
+-
+vector
+-
+string
+-
+cmath
+-
+fstream
+-
+ctime
+-
+

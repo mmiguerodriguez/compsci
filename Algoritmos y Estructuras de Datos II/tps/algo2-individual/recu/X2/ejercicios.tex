@@ -1,0 +1,129 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage[utf8]{inputenc}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,aed2-diseno}
+\usepackage{caratula}
+
+\parskip=5pt % 10pt es el tamaño de fuente
+
+\begin{document}
+
+\titulo{Recuperatorio}
+\subtitulo{Ejercicio X2}
+
+\fecha{\today}
+
+\materia{Algoritmos y Estructuras de Datos II}
+
+\integrante{Rodriguez, Miguel}{57/19}{mmiguerodriguez@gmail.com}
+
+\maketitle
+
+\section*{Ejercicio}
+
+\noindent usuario \textbf{es} string \\
+sala \textbf{es} string \\
+infoClase \textbf{es} tupla(usuario, conj(usuario), conj(usuario))
+
+\begin{tad}
+{\tadNombre{SistemaConsultasVirtuales}}
+\tadGeneros{scv}
+
+\tadIgualdadObservacional{s}{s'}{scv}{docentes($s$) $\igobs$ docentes($s'$) $\land$ \\ salas($s$) $\igobs$ salas($s'$) $\land$ \\ alumnos($s$) $\igobs$ alumnos($s'$) $\land$ \\ clases($s$) $\igobs$ clases($s'$) $\yluego$ \\ $(\forall u:$ usuario)(($u \in$ docentes($s$) $\lor$ $u \in$ alumnos($s$)) $\impluego$ asistencias($s$, $u$) = asistencias($s'$, $u$))}
+
+\tadAlinearFunciones{asistencias}{scv/s, usuario/u}
+\tadObservadores
+\tadOperacion{alumnos}{scv}{conj(usuario)}{}
+\tadOperacion{docentes}{scv}{conj(usuario)}{}
+\tadOperacion{salas}{scv}{conj(sala)}{}
+\tadOperacion{clases}{scv}{dicc(sala, infoClase)}{}
+\tadOperacion{asistencias}{scv/s, usuario/u}{nat}{$u \in$ docentes($s$) $\lor$ $u \in$ alumnos($s$)} 
+
+\tadAlinearFunciones{generar}{conj(usuario),conj(sala)}
+\tadGeneradores
+\tadOperacion{generar}{conj(usuario),conj(sala)}{scv}{}
+\tadOperacion{abrir}{scv/s',sala/s,usuario/u}{scv}{$\neg$enClase($s'$, $u$) $\land$ $s$ $\in$ salas($s'$) $\yluego$ ($\neg$ocupada(s', s) $\land$ $u$ $\in$ docentes($s'$) $\lor$ ocupada($s'$, $s$))}
+\tadOperacion{salir}{scv/s,usuario/u}{scv}{$u \in$ alumnos($s$) $\lor$ $u \in$ docentes($s$) $\land$ enClase($s$, $u$)}
+
+\tadAlinearFunciones{masAsistidores}{scv/s',usuario/u,sala/s}
+\tadOtrasOperaciones
+\tadOperacion{enClase}{scv/s,usuario/u}{bool}{}
+\tadOperacion{claseDe}{scv/s,usuario/u}{sala}{$u \in$ alumnos($s$) $\lor$ $u \in$ docentes($s$) $\land$ enClase($s$, $u$)}
+\tadOperacion{ocupada}{scv/s',sala/s}{bool}{$s \in$ salas($s'$)}
+\tadOperacion{esAdmin}{scv/s',usuario/u,sala/s}{bool}{$u \in$ docentes($s'$) $\land$ $s \in$ salas($s'$)}
+\tadOperacion{masAsistidores}{scv}{conj(usuario)}{}
+
+\tadAxiomas[]
+\tadAlinearAxiomas{alumnos(generar($ds$, $ss$))}
+\tadAxioma{alumnos(generar($ds$, $ss$))}{$\emptyset$}
+\tadAxioma{alumnos(abrir($s'$, $s$, $u$))}{\IF $u$ $\notin$ docentes($s'$) $\land$ $u$ $\notin$ alumnos($s'$) THEN Ag($u$, alumnos($s'$)) ELSE alumnos($s'$) FI}
+\tadAxioma{alumnos(salir($s$, $u$))}{alumnos($s$)}
+
+\tadAlinearAxiomas{docentes(generar($ds$, $ss$))}
+\tadAxioma{docentes(generar($ds$, $ss$))}{$ds$}
+\tadAxioma{docentes(abrir($s'$, $s$, $u$))}{docentes($s'$)}
+\tadAxioma{docentes(salir($s$, $u$))}{docentes($s$)}
+
+\tadAlinearAxiomas{salas(generar($ds$, $ss$))}
+\tadAxioma{salas(generar($ds$, $ss$))}{$ss$}
+\tadAxioma{salas(abrir($s'$, $s$, $u$))}{salas($s'$)}
+\tadAxioma{salas(salir($s$, $u$))}{salas($s$)}
+
+\tadAlinearAxiomas{clases(generar($ds$, $ss$))}
+\tadAxioma{clases(generar($ds$, $ss$))}{vac\'io}
+\tadAxioma{clases(abrir($s'$, $s$, $u$))}{\IF $\neg$ocupada($s'$, $s$) THEN definir($s$, $\langle u$, $\{u\}$, $\{u\}\rangle$, clases($s'$)) ELSE definir($s$, $\langle$admin($s'$, $s$), Ag($u$, conectados($s'$, $s$)), Ag($u$, historial($s'$, $s$))$\rangle$, clases($s'$)) FI}
+\tadAxioma{clases(salir($s$, $u$))}{\IF esAdmin($u$, claseDe($s$, $u$)) THEN borrar(claseDe($s$, $u$), clases($s$)) ELSE definir(claseDe($s$, $u$), $\langle$admin($s$, claseDe($s$, $u$)), conectados($s$, claseDe($s$, $u$)) - $\{u\}$, historial($s$, claseDe($s$, $u$))$\rangle$, clases($s$)) FI}
+
+\tadAlinearAxiomas{asistencias(generar($ds$, $ss$), $u$)}
+\tadAxioma{asistencias(generar($ds$, $ss$), $u$)}{0}
+\tadAxioma{asistencias(abrir($s'$, $s$, $u$), $u'$)}{\IF $u$ = $u'$ THEN {\IF $\neg$ocupada($s'$, $s$) THEN 1 + asistencias($s'$, $u'$) ELSE {\IF $u' \notin$ historial($s'$, $s$) THEN 1 + asistencias($s'$, $u'$) ELSE asistencias($s'$, $u'$) FI}FI} ELSE asistencias($s'$, $u'$) FI}
+\tadAxioma{asistencias(salir($s$, $u$), $u'$)}{asistencias($s$, $u'$)}
+
+\tadAlinearAxiomas{enClaseAux($s$, $claves$, $u$)}
+\tadAxioma{enClase($s$, $u$)}{enClaseAux($s$, claves(clases($s$)), $u$)}
+\tadAxioma{enClaseAux($s$, $claves$, $u$)}{\IF vac\'io?($claves$) THEN false ELSE $u \in$ conectados($s$, dameUno($claves$)) $\lor$ enClaseAux($s$, sinUno($claves$), $u$) FI}
+
+\tadAlinearAxiomas{claseDeAux($s$, $claves$, $u$)}
+\tadAxioma{claseDe($s$, $u$)}{claseDeAux($s$, claves(clases($s$)), $u$)}
+\tadAxioma{claseDeAux($s$, $claves$, $u$)}{\IF $u \in$ conectados($s$, dameUno($claves$)) THEN dameUno($claves$) ELSE claseDeAux($s$, sinUno($claves$), $u$) FI}
+
+\tadAlinearAxiomas{esAdmin($s'$, $s$, $u$)}
+\tadAxioma{ocupada($s'$, $s$)}{def?($s$, clases($s'$))}
+\tadAxioma{esAdmin($s'$, $s$, $u$)}{$u$ = admin($s'$, $s$)}
+
+\tadAlinearAxiomas{masAsistidoresAux($s$, $us$)}
+\tadAxioma{masAsistidores($s$)}{masAsistidoresAux($s$, alumnos($s$) $\cup$ docentes($s$))}
+\tadAxioma{masAsistidoresAux($s$, $us$)}{\IF vac\'io?($us$) THEN $\emptyset$ ELSE {\IF asistencias($s$, dameUno($us$)) = maxAsistencias($s$) THEN Ag(dameUno($us$), masAsistidoresAux($s$, sinUno($us$))) ELSE masAsistidoresAux($s$, sinUno($us$)) FI} FI}
+
+\tadAlinearAxiomas{maxAsistenciasAux($s$, $us$, $max$)}
+\tadAxioma{maxAsistencias($s$)}{maxAsistenciasAux($s$, alumnos($s$) $\cup$ docentes($s$), 0)}
+\tadAxioma{maxAsistenciasAux($s$, $us$, $max$)}{\IF vac\'io?($us$) THEN $max$ ELSE {\IF asistencias($s$, dameUno($us$)) $>$ $max$ THEN maxAsistenciasAux($s$, sinUno($us$), asistencias($s$, dameUno($us$))) ELSE maxAsistenciasAux($s$, sinUno($us$), $max$) FI} FI} 
+
+\textbf{auxiliares}
+\tadAlinearAxiomas{conectados($s'$, $s$)}
+\tadAxioma{admin($s'$, $s$)}{$\pi_{1}$(obtener($s$, clases($s'$)))}
+\tadAxioma{conectados($s'$, $s$)}{$\pi_{2}$(obtener($s$, clases($s'$)))}
+\tadAxioma{historial($s'$, $s$)}{$\pi_{3}$(obtener($s$, clases($s'$)))}
+
+\end{tad}
+
+\section*{Justificaciones}
+\subsection*{Enunciado}
+\begin{enumerate}
+\item Una clase no es lo mismo que una sala. Las clases ocurren en salas. No puede haber m\'as de una clase por sala. Una vez que el administrador finaliza una clase, esta es terminada, y al abrir la misma sala, cuenta como una clase nueva.
+\item Para que dos sistemas sean observacionalmente iguales, no nos importar\'a cu\'ales fueron las clases en las que ingresaron las personas, si no que la cantidad de clases distintas a las que asistieron sean las mismas en ambos sistemas. Lo que si nos importar\'a son las clases que est\'an siendo dictadas en el momento (diccionario clases), que deben ser iguales. En caso de querer implementar un sistema en el cu\'al se distinga adem\'as por las clases a las que ingresaron los usuarios, en vez de guardar en asistencias la cantidad de asistencias de un usuario a clases distintas, guardar\'ia una lista de salas a las que ingres\'o en clases distintas y usar la longitud de esta lista para calcular la cantidad de asistencias.
+\item El enunciado no dice que el sistema tenga un conjunto de alumnos predeterminado que pueden unirse a las clases, por lo tanto, lo propuesto fue agregar a los alumnos al observador de tipo \texttt{conj(usuario)} cuando un usuario ingresa a una clase y no est\'a en el conjunto de docentes ni alumnos del sistema.
+\end{enumerate}
+\subsection*{Resoluci\'on}
+\begin{enumerate}
+\item Cuando se genera el sistema le pasamos los docentes y las salas disponibles.
+\item Cuando ingresamos a una clase, debe ocurrir que la sala est\'e en las salas disponibles. Si no est\'a ocupada entonces debemos ser un docente (que va a terminar siendo el administrador), mientras que si est\'a ocupada puede ingresar tanto un docente como un alumno.
+\item En caso de ser docente y ser el que est\'a abriendo la sala por primera vez, definimos esa sala en el diccionario de clases con el docente como administrador. Adem\'as, lo agregamos al conjunto de conectados e historial de la clase
+\item En caso de que la sala est\'e ocupada, agregamos al docente o alumno que quiera ingresar a la clase en el diccionario de la sala actual. Lo agregamos en el historial de la clase y en los que estan conectados actualmente a la clase.
+\item Al ingresar a una clase, si el usuario se encuentra en el historial de usuarios que entraron a esa clase, no se le suma a sus asistencias, caso contrario, se le suma 1 a la cantidad de asistencias a clases distintas que tiene. Una clase es distinta para un usuario cuando este \textbf{no est\'a} en el historial para esa clase. Ejemplo: si existe una clase en la sala 1, el usuario entra, el administrador la cierra y se vuelve a crear otra clase en la sala 1 y el mismo usuario entra, entonces se cuenta como que tiene 2 asistencias (ya que para mi interpretaci\'on estas ser\'ian clases distintas).
+\item Cuando una persona se retira de una sala, si es el administrador, se borra del diccionario de clases la sala en la que est\'a, esto a su vez borra el administrador de la clase, los usuarios conectados y el historial. En caso de no ser el administrador, se elimina al usuario del conjunto de conectados para esa clase, pero se mantiene al usuario en el historial de usuarios que se conectaron a la clase (esto nos permitir\'a no sumarle asistencias cuando el usuario ingrese a una clase m\'as una vez).
+\item Para calcular los usuarios con m\'as asistencias a clases primero utilizamos \texttt{maxAsistencias} para tener el n\'umero m\'aximo de  asistencias entre todos los usuarios. Luego, comparamos las asistencias de cada usuario en \texttt{masAsistidores}, y todos los que tengan cantidad de asistencias = m\'aximo de asistencias, se agregan al conjunto de resultado.
+\end{enumerate}
+
+\end{document}

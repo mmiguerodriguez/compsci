@@ -1,0 +1,124 @@
+--Dado este foldD me pidio dar la estructura a la que lo estoy aplicando
+
+foldD :: (c->c) -> (a -> c -> c) -> (b -> c) -> D a b -> c
+
+D a b = C1 (D a b) | C2 a (D a b) | C3 b
+
+
+--me pidio definir top que devuelve el primer valor que encuentra en el dato
+top (C2 1 (C3 7)) = 1
+top (C3 7) = 7
+top (C1…C1 (C2 4 (C3 8))) = 4
+top (C1 … C1(C3 9)) = 9
+
+top = foldD (\rec -> rec) (\a rec -> Left a) (\b -> Right b)
+--Como C2 y C3 pueden devolver distintos tipos me guió a que use Either
+
+--me pidio dar un dato infinito para esta estructura
+dato :: A Int Bool
+dato = C2 1 dato
+
+--no se me ocurrio y me lo hizo pensar primero en listas y despues me salió
+unaLista :: [Int]
+unaLista = 0 : unaLista
+
+
+
+
+--reducir "top dato" hablando de que como es lazy no se cuelga por mas que sea infinita y todo eso
+top dato -> foldD (\rec -> rec) (\a rec -> Left a) (\b -> Right b) dato 
+ -> foldD (\rec -> rec) (\a rec -> Left a) (\b -> Right b)  (C2 1 dato)
+-> (\a ->( rec -> Left a) ) 1 (foldD … dato)
+-> (rec -> Left 1) (foldD … dato)
+--------
+
+--Me preguntó sobre la reduccion de registros (me dejó verlas en las diapos)
+--Me hizo explicar como funciona E-Rcd (Que va reduciendo de izquierda a derecha)
+--Dijo que era una reduccion muy cara porque tenes que reducir todo cuando capaz te interesa una sola etiqueta
+--Entonces propuso sacar E-Rcd y el problema está en que no podes reducir {l1 = Mi} 
+--Pero no podrias reducir esto, entonces perdes progreso
+{l1 = if true then 0 else succ(0)}
+
+--Entonces propuso dejar E-Rcd y modificar E-ProjRcd pidiendo que solo sea un valor la que quiero proyectar
+--Pierdo determinismo porque puedo reducir las etiquetas y despues proyectar o al revés
+
+{l1 = Mi,..,ln = Mn}.ln
+
+
+-----------------
+
+--Me dio esta definicion y pidio definir el W
+
+Gamma > M : tau       Gamma,x:tau > N : sigma
+----------------------------------------------------------------
+Gamma > x ? M -> N : sigma
+
+
+W( x? U -> V) = S gamma1 U S gamma2’ > S x? S U -> S V -> S sigma
+W(U) = gamma1 > U : tau
+W(V) = gamma2 > V : sigma
+x_ro {Si x:ro pertenece a gamma2 -> x:ro
+    sino x:t t variable fresca}
+gamma2’ = gamma2 - {x}
+x no tiene que pertenecer a gamma1
+S=MGU{sigma1=sigma2 | x:sigma1  }{ro=tau}
+
+-------
+
+--Definir el objeto Either que se comporta como en haskell
+--Este fue muy charlado y lo armamos juntos
+
+o :: Maybe Int
+
+f :: Maybe Int -> Bool
+case x of 
+   Left v -> f v
+
+
+= [val = 
+ 
+]
+
+Left1 = [case: function(l r){return l val},
+val = 1]
+Right1 [case: function(l r){return  r val}
+val = true]
+
+--preguntó que diferencia hay entre reducir en lambda y en sigma
+--también como que llegue a un error en sigma y en lambda, hablando de progreso y no terminacion
+
+
+-------
+
+--un monton de preguntas de resolucion
+--diferencias entre proposicional y primer orden
+--porqué no es completo resolucion binaria en primer orden y cómo hago para que sea completo
+--Le estaba dando este ejemplo de factorizacion y preguntó si podía llegar a la clausula vacia en un paso con general
+{{~P(X),~P(Y)}, {P(a),P(b)}} -> {-P(Z)}
+
+--Que de una clausula que no pueda ser de Horn
+P(X) v Q(Y)
+{{P(X),Q(Y)}}
+
+--Me pregunto como seria la clausula de abajo en Forma Skolemizada
+--no terminamos de definirlo y pasó a prolog
+E Z forall X (-p(X,Z) v E W for all  p(Z,W))
+--pregunto si unificaba, como son 2 clausulas funciona
+{{~p(X,f(Y))},{p(f(Y),f(X)}}
+-
+
+--preguntas de prolog
+--si el arbol SLD tenia todas las soluciones y porque prolog podria no encontrarlas
+--si cambia el arbol o las soluciones si modifico el orden en que escribo las reglas en prolog
+
+--un monton de casos con ! y not que fue borrando
+
+p(X) :- q(X).
+p(a).
+q(X) :- r(X),!.
+q(b).
+r(c).
+r(d).
+
+p(W).
+X= c, X=d, X=b, X=a

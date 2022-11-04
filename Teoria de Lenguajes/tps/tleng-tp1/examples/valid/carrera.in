@@ -1,0 +1,27 @@
+type carrera struct {
+	nombre string
+	codigo int
+	plan_de_estudios struct {
+		primero []materia
+		segundo []materia
+		tercero []materia
+	}
+}
+
+type materia struct {
+	nombre string
+	codigo int
+	docente persona
+	alumnos []persona
+	bibliografia struct {
+		practica string
+		teorica string
+	}
+}
+
+type persona struct {
+	nombre string
+	apellido string
+	edad int
+	dni int
+}

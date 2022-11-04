@@ -1,0 +1,75 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage[utf8]{inputenc}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,aed2-diseno}
+\usepackage{caratula}
+
+\parskip=5pt % 10pt es el tamaño de fuente
+
+\begin{document}
+
+\titulo{Recuperatorio}
+\subtitulo{Ejercicio X1}
+
+\fecha{\today}
+
+\materia{Algoritmos y Estructuras de Datos II}
+
+\integrante{Rodriguez, Miguel}{57/19}{mmiguerodriguez@gmail.com}
+
+\maketitle
+
+\section*{Ejercicio}
+
+\begin{tad}{\tadNombre{ADH($\alpha$)}}
+\tadGeneros{adh($\alpha$)}
+
+\tadIgualdadObservacional{a}{a'}{adh}{ra\'iz($a$) $\igobs$ ra\'iz($a'$) $\land$ \\  hijos($a$) $\igobs$ hijos($a'$)}
+
+\tadAlinearFunciones{hijos}{adh($\alpha$)}
+\tadObservadores
+\tadOperacion{ra\'iz}{adh($\alpha$)}{$\alpha$}{}
+\tadOperacion{hijos}{adh($\alpha$)}{dicc(nat, adh($\alpha$))}{}
+
+\tadAlinearFunciones{rose}{$\alpha$,secu(rosetree($\alpha$))}
+\tadGeneradores
+\tadOperacion{cons}{$\alpha$,dicc(nat{,}\ adh($\alpha$))}{adh($\alpha$)}{}
+
+\tadAlinearFunciones{maxAlturaHijos}{dicc(nat, adh($\alpha$)), conj(nat)}
+\tadOtrasOperaciones
+\tadOperacion{altura}{adh($\alpha$)}{nat}{}
+\tadOperacion{hojas}{adh($\alpha$)}{conj($\alpha$)}{}
+\tadOperacion{ramas}{adh($\alpha$)}{conj(secu($\alpha$))}{}
+
+\tadOperacion{maxAlturaHijos}{dicc(nat{,}\ adh($\alpha$)), conj(nat)}{nat}{}
+\tadOperacion{hojasHijos}{dicc(nat{,}\ adh($\alpha$)), conj(nat)}{conj($\alpha$)}{}
+\tadOperacion{ramasHijos}{dicc(nat{,}\ adh($\alpha$)), conj(nat)}{conj(secu($\alpha$))}{}
+\tadOperacion{prefijarEnTodos}{$\alpha$, conj(secu($\alpha$))}{conj(secu($\alpha$))}{}
+
+\tadAxiomas
+%\tadAlinearAxiomas{hallarPalabraHijos($rs$, $p$)}
+\tadAxioma{raiz(cons($r$, $h$))}{$r$}
+\tadAxioma{hijos(cons($r$, $h$))}{$h$}
+
+\tadAxioma{altura($a$)}{\IF vac\'io?(claves(hijos($a$))) THEN 1 ELSE 1 + maxAlturaHijos(hijos($a$), claves(hijos($a$))) FI}
+\tadAxioma{maxAlturaHijos($as$, $keys$)}{\IF \#($keys$) = 1 THEN altura(obtener(dameUno($keys$), $as$)) ELSE max(altura(obtener(dameUno($keys$), $as$)), maxAlturaHijos($as$, sinUno($keys$))) FI}
+
+\tadAxioma{hojas($a$)}{\IF vac\'io?(claves(hijos($a$))) THEN $\{$ ra\'iz($a$) $\}$ ELSE hojasHijos(hijos($a$), claves(hijos($a$))) FI}
+\tadAxioma{hojasHijos($as$, $keys$)}{\IF \#($keys$) = 0 THEN $\emptyset$ ELSE hojas(obtener(dameUno($keys$), $as$)) $\cup$ hojasHijos($as$, sinUno($keys$)) FI}
+
+\tadAxioma{ramas($a$)}{\IF vac\'io?(claves(hijos($a$))) THEN $\{<$ ra\'iz($a$) $>\}$ ELSE prefijarEnTodos(raiz($a$), ramasHijos(hijos($a$), claves(hijos($a$)))) FI}
+\tadAxioma{ramasHijos($as$, $keys$)}{\IF \#($keys$) = 0 THEN $\emptyset$ ELSE ramas(obtener(dameUno($keys$), $as$)) $\cup$ ramasHijos($as$, sinUno($keys$)) FI}
+\tadAxioma{prefijarEnTodos($e$, $cs$)}{\IF vac\'io?(cs) THEN $\emptyset$ ELSE Ag(e $\bullet$ dameUno($cs$), prefijarEnTodos($e$, sinUno($cs$))) FI}
+\end{tad}
+
+\section*{Justificaciones}
+\noindent \textbf{Generales:} La idea y estructura en la mayor\'ia de las funciones es muy parecida. Adem\'as de pasar recursivamente los hijos de cada \textsc{adh} para poder calcular lo que se nos pide, agregamos como par\'ametro las claves de este diccionario para as\'i poder recorrerlos. Luego, en cada paso, vamos sacando las claves hasta quedarnos sin.
+
+\noindent \textbf{Altura:} Por el ejemplo dado en el enunciado, me da a entender que un \textsc{adh} sin hijos tiene altura = 1.  En caso de tener hijos, usamos \textsc{maxAlturaHijos} que a su vez llama a \textsc{altura} en caso de haber s\'olo una clave (para terminar la recursi\'on), y en el caso de que haya m\'as de 1 clave, se llama recursivamente. Podemos notar que \textsc{maxAlturaHijos} obtiene el m\'aximo de todos los resultados recursivos.
+
+\noindent \textbf{Hojas:} La idea es la misma que para \textsc{altura}. En caso de que el \textsc{adh} no tenga hijos, devolvemos su ra\'iz ya que va a ocurrir que es una hoja. En el caso contrario, buscamos las hojas de sus hijos que, en el final de la recursi\'on, va a hacer una uni\'on de todas las ra\'ices de los \textsc{adh} que no tengan hijos.
+
+\noindent \textbf{Ramas:} Para esta funcionalidad, continuamos con la misma idea de pasar las claves del diccionario de los hijos para poder recorrerlos. En el caso de que un \textsc{adh} no tenga hijos, entonces el resultado del conjunto de secuencias de sus ramas va a ser \'unicamente la ra\'iz. En el caso contrario, lo que hacemos es calcular las ramas de los hijos y adem\'as prefijar en todas la ra\'iz.
+
+\end{document}

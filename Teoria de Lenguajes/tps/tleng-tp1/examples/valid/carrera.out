@@ -1,0 +1,702 @@
+{
+  "nombre": "xfkqy",
+  "codigo": 904,
+  "plan_de_estudios": {
+    "primero": [
+      {
+        "nombre": "opfzp",
+        "codigo": 966,
+        "docente": {
+          "nombre": "mucri",
+          "apellido": "nyfjg",
+          "edad": 346,
+          "dni": 772,
+        },
+        "alumnos": [
+          {
+            "nombre": "tscwf",
+            "apellido": "sijxr",
+            "edad": 461,
+            "dni": 606,
+          },
+          {
+            "nombre": "mjbfn",
+            "apellido": "bapvf",
+            "edad": 95,
+            "dni": 67,
+          },
+          {
+            "nombre": "ucrzh",
+            "apellido": "fttss",
+            "edad": 279,
+            "dni": 843,
+          },
+          {
+            "nombre": "laipf",
+            "apellido": "tcqhe",
+            "edad": 426,
+            "dni": 753,
+          },
+          {
+            "nombre": "urlnn",
+            "apellido": "vcgem",
+            "edad": 385,
+            "dni": 599,
+          }
+        ],
+        "bibliografia": {
+          "practica": "mzpnp",
+          "teorica": "sqbxu",
+        }
+      },
+      {
+        "nombre": "uqpdx",
+        "codigo": 380,
+        "docente": {
+          "nombre": "ovnwl",
+          "apellido": "lckzh",
+          "edad": 630,
+          "dni": 546,
+        },
+        "alumnos": [
+          {
+            "nombre": "oanea",
+            "apellido": "lgpnt",
+            "edad": 471,
+            "dni": 541,
+          },
+          {
+            "nombre": "qjjqr",
+            "apellido": "uzuja",
+            "edad": 769,
+            "dni": 792,
+          },
+          {
+            "nombre": "kbzou",
+            "apellido": "vumil",
+            "edad": 371,
+            "dni": 552,
+          },
+          {
+            "nombre": "tevqm",
+            "apellido": "iyajy",
+            "edad": 484,
+            "dni": 246,
+          },
+          {
+            "nombre": "mksul",
+            "apellido": "vbhdb",
+            "edad": 807,
+            "dni": 302,
+          }
+        ],
+        "bibliografia": {
+          "practica": "grzzs",
+          "teorica": "ypsmt",
+        }
+      },
+      {
+        "nombre": "sspcq",
+        "codigo": 931,
+        "docente": {
+          "nombre": "atayw",
+          "apellido": "wcnbd",
+          "edad": 475,
+          "dni": 226,
+        },
+        "alumnos": [
+          {
+            "nombre": "ouoyh",
+            "apellido": "ixumw",
+            "edad": 657,
+            "dni": 833,
+          },
+          {
+            "nombre": "nljrs",
+            "apellido": "llpfm",
+            "edad": 592,
+            "dni": 784,
+          },
+          {
+            "nombre": "kcawk",
+            "apellido": "wulpz",
+            "edad": 641,
+            "dni": 17,
+          },
+          {
+            "nombre": "briav",
+            "apellido": "jxvjn",
+            "edad": 125,
+            "dni": 657,
+          },
+          {
+            "nombre": "ghioy",
+            "apellido": "hqlsq",
+            "edad": 592,
+            "dni": 929,
+          }
+        ],
+        "bibliografia": {
+          "practica": "vsaul",
+          "teorica": "sbwqa",
+        }
+      },
+      {
+        "nombre": "rzpnx",
+        "codigo": 345,
+        "docente": {
+          "nombre": "frkyj",
+          "apellido": "cxuiv",
+          "edad": 163,
+          "dni": 738,
+        },
+        "alumnos": [
+          {
+            "nombre": "lohlx",
+            "apellido": "tztct",
+            "edad": 392,
+            "dni": 900,
+          },
+          {
+            "nombre": "gwbvs",
+            "apellido": "yhaza",
+            "edad": 464,
+            "dni": 433,
+          },
+          {
+            "nombre": "syatc",
+            "apellido": "dmnub",
+            "edad": 278,
+            "dni": 262,
+          },
+          {
+            "nombre": "qzkdh",
+            "apellido": "nxcno",
+            "edad": 852,
+            "dni": 14,
+          },
+          {
+            "nombre": "nzyvq",
+            "apellido": "bwbmn",
+            "edad": 294,
+            "dni": 156,
+          }
+        ],
+        "bibliografia": {
+          "practica": "vqsyy",
+          "teorica": "pelpu",
+        }
+      },
+      {
+        "nombre": "eytkr",
+        "codigo": 845,
+        "docente": {
+          "nombre": "lkuiw",
+          "apellido": "fvgzs",
+          "edad": 870,
+          "dni": 384,
+        },
+        "alumnos": [
+          {
+            "nombre": "bxtfs",
+            "apellido": "nztzr",
+            "edad": 574,
+            "dni": 200,
+          },
+          {
+            "nombre": "rffyo",
+            "apellido": "zrtww",
+            "edad": 88,
+            "dni": 69,
+          },
+          {
+            "nombre": "nxcux",
+            "apellido": "rmnfh",
+            "edad": 311,
+            "dni": 138,
+          },
+          {
+            "nombre": "ortuy",
+            "apellido": "zqqly",
+            "edad": 613,
+            "dni": 700,
+          },
+          {
+            "nombre": "jiycr",
+            "apellido": "vdgea",
+            "edad": 888,
+            "dni": 403,
+          }
+        ],
+        "bibliografia": {
+          "practica": "erulh",
+          "teorica": "lvcqc",
+        }
+      }
+    ],
+    "segundo": [
+      {
+        "nombre": "lpcyu",
+        "codigo": 63,
+        "docente": {
+          "nombre": "davya",
+          "apellido": "pvthy",
+          "edad": 617,
+          "dni": 104,
+        },
+        "alumnos": [
+          {
+            "nombre": "szhte",
+            "apellido": "tmacq",
+            "edad": 179,
+            "dni": 65,
+          },
+          {
+            "nombre": "cfdpd",
+            "apellido": "egrba",
+            "edad": 693,
+            "dni": 221,
+          },
+          {
+            "nombre": "hujma",
+            "apellido": "jrvfk",
+            "edad": 299,
+            "dni": 789,
+          },
+          {
+            "nombre": "jlqws",
+            "apellido": "pfitx",
+            "edad": 256,
+            "dni": 674,
+          },
+          {
+            "nombre": "ysvdc",
+            "apellido": "zvoxk",
+            "edad": 378,
+            "dni": 201,
+          }
+        ],
+        "bibliografia": {
+          "practica": "tlgyt",
+          "teorica": "feqos",
+        }
+      },
+      {
+        "nombre": "njcxd",
+        "codigo": 358,
+        "docente": {
+          "nombre": "pdntw",
+          "apellido": "toklv",
+          "edad": 769,
+          "dni": 502,
+        },
+        "alumnos": [
+          {
+            "nombre": "mkvem",
+            "apellido": "rmlby",
+            "edad": 502,
+            "dni": 268,
+          },
+          {
+            "nombre": "bykds",
+            "apellido": "bwxpm",
+            "edad": 48,
+            "dni": 123,
+          },
+          {
+            "nombre": "tcnvg",
+            "apellido": "wdqip",
+            "edad": 545,
+            "dni": 977,
+          },
+          {
+            "nombre": "mhssm",
+            "apellido": "kilhn",
+            "edad": 524,
+            "dni": 214,
+          },
+          {
+            "nombre": "lusxl",
+            "apellido": "iwrci",
+            "edad": 37,
+            "dni": 418,
+          }
+        ],
+        "bibliografia": {
+          "practica": "qmlzl",
+          "teorica": "pvsap",
+        }
+      },
+      {
+        "nombre": "olbci",
+        "codigo": 377,
+        "docente": {
+          "nombre": "mdlwh",
+          "apellido": "kzqgc",
+          "edad": 887,
+          "dni": 315,
+        },
+        "alumnos": [
+          {
+            "nombre": "axptr",
+            "apellido": "eivdy",
+            "edad": 357,
+            "dni": 527,
+          },
+          {
+            "nombre": "khxri",
+            "apellido": "tiqyt",
+            "edad": 230,
+            "dni": 692,
+          },
+          {
+            "nombre": "bgvqt",
+            "apellido": "xawbu",
+            "edad": 625,
+            "dni": 978,
+          },
+          {
+            "nombre": "cqfpy",
+            "apellido": "kpbdu",
+            "edad": 516,
+            "dni": 815,
+          },
+          {
+            "nombre": "eugpl",
+            "apellido": "lyuhd",
+            "edad": 231,
+            "dni": 874,
+          }
+        ],
+        "bibliografia": {
+          "practica": "nsncf",
+          "teorica": "gvahg",
+        }
+      },
+      {
+        "nombre": "ptkkb",
+        "codigo": 778,
+        "docente": {
+          "nombre": "sphfj",
+          "apellido": "yitla",
+          "edad": 993,
+          "dni": 735,
+        },
+        "alumnos": [
+          {
+            "nombre": "atome",
+            "apellido": "astto",
+            "edad": 176,
+            "dni": 617,
+          },
+          {
+            "nombre": "fypiw",
+            "apellido": "nebpq",
+            "edad": 361,
+            "dni": 375,
+          },
+          {
+            "nombre": "nadbe",
+            "apellido": "pnqip",
+            "edad": 784,
+            "dni": 813,
+          },
+          {
+            "nombre": "quhjs",
+            "apellido": "ozcil",
+            "edad": 485,
+            "dni": 502,
+          },
+          {
+            "nombre": "ghwzt",
+            "apellido": "lwejs",
+            "edad": 478,
+            "dni": 594,
+          }
+        ],
+        "bibliografia": {
+          "practica": "oyess",
+          "teorica": "igpzz",
+        }
+      },
+      {
+        "nombre": "vkrel",
+        "codigo": 31,
+        "docente": {
+          "nombre": "safrc",
+          "apellido": "jjmyy",
+          "edad": 652,
+          "dni": 629,
+        },
+        "alumnos": [
+          {
+            "nombre": "dttct",
+            "apellido": "xmamy",
+            "edad": 44,
+            "dni": 390,
+          },
+          {
+            "nombre": "agidh",
+            "apellido": "nfhzf",
+            "edad": 996,
+            "dni": 691,
+          },
+          {
+            "nombre": "bnnfz",
+            "apellido": "adzji",
+            "edad": 382,
+            "dni": 280,
+          },
+          {
+            "nombre": "zgaqd",
+            "apellido": "whbzt",
+            "edad": 460,
+            "dni": 64,
+          },
+          {
+            "nombre": "czuwm",
+            "apellido": "jxkva",
+            "edad": 739,
+            "dni": 535,
+          }
+        ],
+        "bibliografia": {
+          "practica": "yytok",
+          "teorica": "dlzsh",
+        }
+      }
+    ],
+    "tercero": [
+      {
+        "nombre": "rzhhf",
+        "codigo": 802,
+        "docente": {
+          "nombre": "xhten",
+          "apellido": "palmr",
+          "edad": 528,
+          "dni": 500,
+        },
+        "alumnos": [
+          {
+            "nombre": "xjolb",
+            "apellido": "eiika",
+            "edad": 630,
+            "dni": 455,
+          },
+          {
+            "nombre": "quhhn",
+            "apellido": "zvapx",
+            "edad": 858,
+            "dni": 727,
+          },
+          {
+            "nombre": "sdgtc",
+            "apellido": "yqyhs",
+            "edad": 166,
+            "dni": 367,
+          },
+          {
+            "nombre": "lzjor",
+            "apellido": "dfaxy",
+            "edad": 237,
+            "dni": 422,
+          },
+          {
+            "nombre": "voose",
+            "apellido": "ltohc",
+            "edad": 636,
+            "dni": 925,
+          }
+        ],
+        "bibliografia": {
+          "practica": "kakmn",
+          "teorica": "qznud",
+        }
+      },
+      {
+        "nombre": "wlond",
+        "codigo": 724,
+        "docente": {
+          "nombre": "zgzid",
+          "apellido": "idmbe",
+          "edad": 119,
+          "dni": 20,
+        },
+        "alumnos": [
+          {
+            "nombre": "mctql",
+            "apellido": "cjrgb",
+            "edad": 55,
+            "dni": 244,
+          },
+          {
+            "nombre": "nhzgh",
+            "apellido": "hculp",
+            "edad": 880,
+            "dni": 966,
+          },
+          {
+            "nombre": "exgbz",
+            "apellido": "qlqnn",
+            "edad": 178,
+            "dni": 318,
+          },
+          {
+            "nombre": "cwyxk",
+            "apellido": "lqckt",
+            "edad": 497,
+            "dni": 761,
+          },
+          {
+            "nombre": "smkti",
+            "apellido": "rloqu",
+            "edad": 868,
+            "dni": 146,
+          }
+        ],
+        "bibliografia": {
+          "practica": "pcpmk",
+          "teorica": "xdirh",
+        }
+      },
+      {
+        "nombre": "jowqb",
+        "codigo": 893,
+        "docente": {
+          "nombre": "uzllh",
+          "apellido": "ubyqi",
+          "edad": 583,
+          "dni": 171,
+        },
+        "alumnos": [
+          {
+            "nombre": "aznrr",
+            "apellido": "yhsvo",
+            "edad": 26,
+            "dni": 200,
+          },
+          {
+            "nombre": "dgias",
+            "apellido": "vxvbo",
+            "edad": 333,
+            "dni": 184,
+          },
+          {
+            "nombre": "fmsfh",
+            "apellido": "qstgt",
+            "edad": 230,
+            "dni": 414,
+          },
+          {
+            "nombre": "zzofp",
+            "apellido": "mfgnx",
+            "edad": 544,
+            "dni": 886,
+          },
+          {
+            "nombre": "misco",
+            "apellido": "nsigs",
+            "edad": 790,
+            "dni": 115,
+          }
+        ],
+        "bibliografia": {
+          "practica": "ezfze",
+          "teorica": "vkdfg",
+        }
+      },
+      {
+        "nombre": "nzshn",
+        "codigo": 967,
+        "docente": {
+          "nombre": "fjfpa",
+          "apellido": "fxztx",
+          "edad": 567,
+          "dni": 238,
+        },
+        "alumnos": [
+          {
+            "nombre": "bdxpc",
+            "apellido": "nzdcr",
+            "edad": 995,
+            "dni": 387,
+          },
+          {
+            "nombre": "gdrqf",
+            "apellido": "oxbjm",
+            "edad": 580,
+            "dni": 83,
+          },
+          {
+            "nombre": "geqto",
+            "apellido": "qjrva",
+            "edad": 584,
+            "dni": 679,
+          },
+          {
+            "nombre": "vzulo",
+            "apellido": "micjs",
+            "edad": 188,
+            "dni": 708,
+          },
+          {
+            "nombre": "dhren",
+            "apellido": "ppmkl",
+            "edad": 398,
+            "dni": 843,
+          }
+        ],
+        "bibliografia": {
+          "practica": "cygmp",
+          "teorica": "uxbzv",
+        }
+      },
+      {
+        "nombre": "fwsgp",
+        "codigo": 380,
+        "docente": {
+          "nombre": "rmarn",
+          "apellido": "mrytm",
+          "edad": 244,
+          "dni": 506,
+        },
+        "alumnos": [
+          {
+            "nombre": "beofi",
+            "apellido": "qpoar",
+            "edad": 378,
+            "dni": 509,
+          },
+          {
+            "nombre": "rqobv",
+            "apellido": "hfitf",
+            "edad": 664,
+            "dni": 432,
+          },
+          {
+            "nombre": "vhmdm",
+            "apellido": "aaeqb",
+            "edad": 688,
+            "dni": 261,
+          },
+          {
+            "nombre": "ppecd",
+            "apellido": "rmaqg",
+            "edad": 842,
+            "dni": 370,
+          },
+          {
+            "nombre": "wurvx",
+            "apellido": "nhqtj",
+            "edad": 287,
+            "dni": 929,
+          }
+        ],
+        "bibliografia": {
+          "practica": "oxwxj",
+          "teorica": "kirwm",
+        }
+      }
+    ],
+  }
+}

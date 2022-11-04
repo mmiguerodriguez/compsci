@@ -1,0 +1,178 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage[utf8]{inputenc}
+\usepackage{aed2-symb,aed2-itef,aed2-tad,aed2-diseno}
+\usepackage{caratula}
+
+\parskip=5pt % 10pt es el tamaño de fuente
+
+\begin{document}
+
+\titulo{Guia 1}
+\subtitulo{Ejercicios obligatorios de la practica}
+
+\fecha{\today}
+
+\materia{Algoritmos y Estructuras de Datos II}
+
+\integrante{Rodriguez, Miguel}{57/19}{mmiguerodriguez@gmail.com}
+
+\maketitle
+
+\section{Ejercicio 1}
+
+\begin{tad}{\tadNombre{Rosetree($\alpha$)}}
+\tadGeneros{rosetree($\alpha$)}
+
+\tadIgualdadObservacional{r}{r'}{rosetree}{(raiz($r$) $\igobs$ raiz($r'$) $\land$ hijos($r$) $\igobs$ hijos($r'$)}
+
+\tadAlinearFunciones{hijos}{rosetree($\alpha$)}
+\tadObservadores
+\tadOperacion{raiz}{rosetree($\alpha$)}{$\alpha$}{}
+\tadOperacion{hijos}{rosetree($\alpha$)}{secu(rosetree($\alpha$))}{}
+
+\tadAlinearFunciones{rose}{$\alpha$,secu(rosetree($\alpha$))}
+\tadGeneradores
+\tadOperacion{rose}{$\alpha$,secu(rosetree($\alpha$))}{rosetree($\alpha$)}{}
+
+\tadAlinearFunciones{hallarPalabraHijos}{secu(rosetree($\alpha$)), $\alpha$}
+\tadOtrasOperaciones
+\tadOperacion{secuenciaPosible}{rosetree($\alpha$),secu($\alpha$)}{secu($\alpha$)}{}
+\tadOperacion{hallarPalabra}{rosetree($\alpha$), $\alpha$}{bool}{}
+\tadOperacion{hallarPalabraHijos}{secu(rosetree($\alpha$)), $\alpha$}{bool}{}
+
+\tadAxiomas[\paratodo{secu(rosetree($\alpha$)}{s}, \paratodo{$\alpha$}{a}]
+
+\tadAlinearAxiomas{hallarPalabraHijos($rs$, $p$)}
+\tadAxioma{raiz(rose($a$, $s$))}{$a$}
+\tadAxioma{hijos(rose($a$, $s$))}{$s$}
+
+\tadAxioma{secuenciaPosible($r$, $s$)}{\IF $vacio$($s$) THEN $\emptyset$ ELSE ({\IF hallarPalabra($r$, prim($s$)) THEN prim($s$) ELSE $\emptyset$ FI}) $\circulito$ secuenciaPosible($r$, fin($s$)) FI}
+
+\tadAxioma{hallarPalabra($r$, $p$)}{\IF raiz($r$) = prim($p$) THEN hallarPalabraHijos(hijos($r$), fin($p$)) ELSE false FI}
+
+\tadAxioma{hallarPalabraHijos($rs$, $p$)}{\IF vacio?($p$) THEN {\IF vacio?(rs) THEN true ELSE false FI} ELSE {\IF vacio?($rs$) THEN false ELSE {\IF raiz(prim($rs$)) = prim($p$) THEN hallarPalabraHijos(hijos(prim($rs$)), fin($p$)) $\lor$ hallarPalabraHijos(fin($rs$), $p$) ELSE hallarPalabraHijos(fin($rs$), $p$) FI} FI} FI}
+
+\end{tad}
+
+\section{Ejercicio 2}
+
+\begin{tad}{\tadNombre{SistemaAdministracionRepatriados}}
+\tadGeneros{sar}
+% \tadUsa{\tadNombre{Bool, Nat, Conjunto(string?)}}
+
+\tadIgualdadObservacional{s}{s'}{sar}{centros($s$) $\igobs$ centros($s'$) $\land$ centroMasTransitado($s$) $\igobs$ centroMasTransitado($s'$)}
+
+\tadAlinearFunciones{centroMasTransitado}{sar}
+\tadObservadores
+\tadOperacion{centros}{sar}{conj(centro)}{}
+\tadOperacion{centroMasTransitado}{sar}{centro}{}
+
+\tadAlinearFunciones{nuevoDia}{sar/s,persona/p,centro/c}
+\tadGeneradores
+\tadOperacion{generar}{sar,conj(centro)}{sar}{}
+\tadOperacion{aterrizar}{sar,conj(persona)}{sar}{}
+\tadOperacion{mover}{sar/s,persona/p,centro/c}{sar}{$p$ $\notin$ personas(c) $\land$ centroDe($s$, $p$) $\neq$ $\emptyset$}
+\tadOperacion{nuevoDia}{sar}{sar}{}
+
+\tadAlinearFunciones{masTransitadoAux}{conj(centro), persona}
+\tadOtrasOperaciones
+\tadOperacion{nuevoDiaCentros}{conj(centro)}{conj(centro)}{}
+\tadOperacion{centroDe}{sar, persona}{centro}{}
+
+\tadAxiomas[]
+\tadAlinearAxiomas{centroMasTransitado($s$)}
+\tadAxioma{centros(generar($c$))}{$c$}
+\tadAxioma{centros(aterrizar($s$, $ps$))}{Ag(aterrizar(dameUno(centros($s$)), $ps$), sinUno(centros($s$)))}
+\tadAxioma{centros(mover($s$, $p$, $c$))}{Ag(asignar($c$, $p$), Ag(sacar($p$, centroDe($s$, $p$)), (centros($s$) - \{$c$, centroDe($s$, $p$)\})))}
+\tadAxioma{centros(nuevoDia($s$))}{nuevoDiaCentros(centros($s$))}
+\tadAxioma{centroMasTransitado($s$)}{masTransitadoAux(sinUno(centros($s$)), dameUno(centros($s$)))}
+\tadAxioma{nuevoDiaCentros($cs$)}{\IF $\emptyset$?($cs$) THEN $\emptyset$ ELSE Ag(nuevoDia(dameUno($cs$)), nuevoDiaCentros(sinUno($cs$))) FI}
+\tadAxioma{centroDe($s$, $p$)}{centroDeAux(centros($s$), $p$)}
+
+
+\textbf{auxiliares}
+\tadAlinearAxiomas{masTransitadoAux($cs$, $c$)}
+\tadAxioma{masTransitadoAux($cs$, $c$)}{\IF $\emptyset$?($cs$) THEN $c$ ELSE {\IF transito(dameUno($cs$)) $>$ transito($c$) THEN masTransitadoAux(sinUno($cs$), dameUno($cs$)) ELSE masTransitadoAux(sinUno($cs$), $c$) FI} FI}
+\tadAxioma{centroDeAux($cs$, $p$)}{\IF $\emptyset$?($cs$) THEN $\emptyset$ ELSE {\IF $p$ $\in$ personas(dameUno($cs$)) THEN dameUno($cs$) ELSE centroDeAux(sinUno($cs$), $p$) FI} FI}
+
+\end{tad}
+
+\begin{tad}
+  {\tadNombre{Centro}}
+
+\tadIgualdadObservacional{c}{c'}{centro}{personas($c$) $\igobs$ personas($c$) $\land$ transito($c$) = transito($c'$) $\land$ altas($c$) = altas($c'$)}
+\tadGeneros{centro}
+
+\tadAlinearFunciones{personas}{centro}
+\tadObservadores
+\tadOperacion{personas}{centro}{conj(persona)}{}
+\tadOperacion{transito}{centro}{nat}{}
+\tadOperacion{altas}{centro}{nat}{}
+
+\tadAlinearFunciones{nuevoDia}{centro/c,persona/p}
+\tadGeneradores
+\tadOperacion{generar}{}{centro}{}
+\tadOperacion{aterrizar}{conj(persona)}{centro}{}
+\tadOperacion{asignar}{centro/c,persona/p}{centro}{$p$ $\notin$ personas($c$)}
+\tadOperacion{sacar}{centro/c,persona/p}{centro}{$p$ $\in$ personas($c$)}
+\tadOperacion{alta}{centro/c,persona/p}{centro}{$p$ $\in$ personas($c$)}
+\tadOperacion{nuevoDia}{centro}{centro}{}
+
+\tadAlinearFunciones{personasNuevoDia}{conj(persona)}
+\tadOtrasOperaciones
+\tadOperacion{personasNuevoDia}{conj(persona)}{conj(persona)}{}
+\tadOperacion{altasNuevoDia}{conj(persona)}{nat}{}
+
+\tadAxiomas[]
+\tadAlinearAxiomas{personas(aterrizar($c$, $ps$))}
+\tadAxioma{personas(generar($c$))}{$\emptyset$}
+\tadAxioma{personas(aterrizar($c$, $ps$))}{Ag($ps$, personas($c$))}
+\tadAxioma{personas(asignar($c$, $p$)}{Ag($p$, personas($c$))}
+\tadAxioma{personas(sacar($c$, $p$))}{personas($c$) - \{ $p$ \}}
+\tadAxioma{personas(alta($c$, $p$))}{personas($c$) - \{ $p$ \}}
+\tadAxioma{personas(nuevoDia($c$))}{personasNuevoDia(personas($c$))}
+\tadAxioma{transito(generar($c$))}{0}
+\tadAxioma{transito(aterrizar($c$, $ps$))}{transito($c$) + \#($p$)}
+\tadAxioma{transito(asignar($c$, $p$)}{transito($c$) + 1}
+\tadAxioma{transito(sacar($c$, $p$))}{transito($c$) - 1}
+\tadAxioma{transito(alta($c$, $p$)}{transito($c$) - 1}
+\tadAxioma{transito(nuevoDia($c$))}{transito($c$)}
+\tadAxioma{altas(generar($c$))}{0}
+\tadAxioma{altas(aterrizar($c$, $ps$))}{altas($c$)}
+\tadAxioma{altas(asignar($c$, $p$))}{altas($c$)}
+\tadAxioma{altas(sacar($c$, $p$))}{altas($c$)}
+\tadAxioma{altas(alta($c$, $p$))}{altas($c$) + 1}
+\tadAxioma{altas(nuevoDia($c$))}{altasNuevoDia(personas($c$)) + altas($c$)}
+
+\tadAlinearAxiomas{personasNuevoDia($ps$)}
+\tadAxioma{personasNuevoDia($ps$)}{\IF $\emptyset$?($ps$) THEN $\emptyset$ ELSE Ag({\IF dias(dameUno($ps$)) = 14 THEN $\emptyset$ ELSE nuevoDia(dameUno($ps$)) FI}), personasNuevoDia(sinUno($ps$)) FI}
+\tadAxioma{altasNuevoDia($ps$)}{\IF $\emptyset$?($ps$) THEN 0 ELSE $\beta$(dias(dameUno($ps$)) = 14) + altasNuevoDia(sinUno($ps$)) FI}
+
+\end{tad}
+
+\begin{tad}
+  {\tadNombre{Persona}}
+\tadGeneros{persona}
+\tadIgualdadObservacional{p}{p'}{persona}{nombre($p$) = nombre($p'$)}
+
+\tadAlinearFunciones{nombre}{persona}
+\tadObservadores
+\tadOperacion{nombre}{persona}{string}{}
+\tadOperacion{dias}{persona}{nat}{}
+
+\tadAlinearFunciones{nuevoDia}{persona}
+\tadGeneradores
+\tadOperacion{generar}{string}{persona}{}
+\tadOperacion{nuevoDia}{persona}{persona}{}
+
+\tadAxiomas[]
+\tadAlinearAxiomas{nombre(nuevoDia($p$))}
+\tadAxioma{nombre(generar($n$))}{$n$}
+\tadAxioma{nombre(nuevoDia($p$))}{nombre($p$)}
+\tadAxioma{dias(generar($n$))}{0}
+\tadAxioma{dias(nuevoDia($p$))}{dias($p$) + 1}
+\end{tad}
+
+\end{document}
